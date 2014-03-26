@@ -7,12 +7,18 @@
 //
 
 #import "WXYAppDelegate.h"
+#import <MAMapKit/MAMapKit.h>
+#import <AMapSearchKit/AMapSearchAPI.h>
+
 
 @implementation WXYAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [MAMapServices sharedServices].apiKey = @"7b8460b48a80fdd39af6191245021353";
+    
+    
     return YES;
 }
 							

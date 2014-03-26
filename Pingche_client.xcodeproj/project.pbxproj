@@ -14,13 +14,33 @@
 		181CCBA818CA2538005B357B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 181CCBA718CA2538005B357B /* main.m */; };
 		181CCBAC18CA2538005B357B /* WXYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 181CCBAB18CA2538005B357B /* WXYAppDelegate.m */; };
 		181CCBAF18CA2538005B357B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 181CCBAD18CA2538005B357B /* Main.storyboard */; };
-		181CCBB218CA2538005B357B /* WXYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181CCBB118CA2538005B357B /* WXYViewController.m */; };
+		181CCBB218CA2538005B357B /* WXYMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181CCBB118CA2538005B357B /* WXYMapViewController.m */; };
 		181CCBB418CA2538005B357B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 181CCBB318CA2538005B357B /* Images.xcassets */; };
 		181CCBBB18CA2538005B357B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181CCBBA18CA2538005B357B /* XCTest.framework */; };
 		181CCBBC18CA2538005B357B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181CCB9B18CA2538005B357B /* Foundation.framework */; };
 		181CCBBD18CA2538005B357B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181CCB9F18CA2538005B357B /* UIKit.framework */; };
 		181CCBC518CA2538005B357B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 181CCBC318CA2538005B357B /* InfoPlist.strings */; };
 		181CCBC718CA2538005B357B /* Pingche_clientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 181CCBC618CA2538005B357B /* Pingche_clientTests.m */; };
+		1845A43418CAF7DC00BFC213 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1845A43218CAF7DC00BFC213 /* AMapSearchKit.framework */; };
+		1845A43718CAF84000BFC213 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1845A43618CAF84000BFC213 /* QuartzCore.framework */; };
+		1845A43918CAF84600BFC213 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1845A43818CAF84600BFC213 /* CoreLocation.framework */; };
+		1845A43B18CAF85500BFC213 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1845A43A18CAF85500BFC213 /* SystemConfiguration.framework */; };
+		1845A43D18CAF85D00BFC213 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1845A43C18CAF85D00BFC213 /* CoreTelephony.framework */; };
+		1845A43F18CAF86400BFC213 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1845A43E18CAF86400BFC213 /* libz.dylib */; };
+		1845A44118CAF86A00BFC213 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1845A44018CAF86A00BFC213 /* OpenGLES.framework */; };
+		1845A44318CAF87400BFC213 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1845A44218CAF87400BFC213 /* libstdc++.6.0.9.dylib */; };
+		1845A44518CAF87900BFC213 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1845A44418CAF87900BFC213 /* Security.framework */; };
+		1845A44718CAF8B000BFC213 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1845A44618CAF8B000BFC213 /* AMap.bundle */; };
+		18AFA49018E187DA00D07899 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1845A43318CAF7DC00BFC213 /* MAMapKit.framework */; };
+		18BBC41D18CB6ADB00F765EF /* WXYRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC41C18CB6ADB00F765EF /* WXYRootViewController.m */; };
+		18BBC42018CB6AFA00F765EF /* WXYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC41F18CB6AFA00F765EF /* WXYLoginViewController.m */; };
+		18BBC42318CB6B4F00F765EF /* WXYSelectLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC42218CB6B4F00F765EF /* WXYSelectLocationViewController.m */; };
+		18BBC42718CB7C3600F765EF /* CommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC42618CB7C3600F765EF /* CommonUtility.m */; };
+		18BBC42A18CB7C8600F765EF /* LineDashPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC42918CB7C8600F765EF /* LineDashPolyline.m */; };
+		18BBC42D18CB875E00F765EF /* POIAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC42C18CB875E00F765EF /* POIAnnotation.m */; };
+		18BBC43118CB90BC00F765EF /* WXYDriverRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC43018CB90BC00F765EF /* WXYDriverRootViewController.m */; };
+		18BBC43418CB90E600F765EF /* WXYDriverNewCustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC43318CB90E600F765EF /* WXYDriverNewCustomerViewController.m */; };
+		18BBC43718CB91B300F765EF /* WXYOrderManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC43618CB91B300F765EF /* WXYOrderManagerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +65,43 @@
 		181CCBAA18CA2538005B357B /* WXYAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXYAppDelegate.h; sourceTree = "<group>"; };
 		181CCBAB18CA2538005B357B /* WXYAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXYAppDelegate.m; sourceTree = "<group>"; };
 		181CCBAE18CA2538005B357B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		181CCBB018CA2538005B357B /* WXYViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXYViewController.h; sourceTree = "<group>"; };
-		181CCBB118CA2538005B357B /* WXYViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXYViewController.m; sourceTree = "<group>"; };
+		181CCBB018CA2538005B357B /* WXYMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXYMapViewController.h; sourceTree = "<group>"; };
+		181CCBB118CA2538005B357B /* WXYMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXYMapViewController.m; sourceTree = "<group>"; };
 		181CCBB318CA2538005B357B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		181CCBB918CA2538005B357B /* Pingche_clientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Pingche_clientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		181CCBBA18CA2538005B357B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		181CCBC218CA2538005B357B /* Pingche_clientTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pingche_clientTests-Info.plist"; sourceTree = "<group>"; };
 		181CCBC418CA2538005B357B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		181CCBC618CA2538005B357B /* Pingche_clientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pingche_clientTests.m; sourceTree = "<group>"; };
+		1845A43218CAF7DC00BFC213 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
+		1845A43318CAF7DC00BFC213 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
+		1845A43618CAF84000BFC213 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1845A43818CAF84600BFC213 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1845A43A18CAF85500BFC213 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1845A43C18CAF85D00BFC213 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		1845A43E18CAF86400BFC213 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		1845A44018CAF86A00BFC213 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		1845A44218CAF87400BFC213 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		1845A44418CAF87900BFC213 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		1845A44618CAF8B000BFC213 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = MAMapKit.framework/Versions/2.1.3/Resources/AMap.bundle; sourceTree = "<group>"; };
+		18BBC41B18CB6ADB00F765EF /* WXYRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYRootViewController.h; sourceTree = "<group>"; };
+		18BBC41C18CB6ADB00F765EF /* WXYRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYRootViewController.m; sourceTree = "<group>"; };
+		18BBC41E18CB6AFA00F765EF /* WXYLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYLoginViewController.h; sourceTree = "<group>"; };
+		18BBC41F18CB6AFA00F765EF /* WXYLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYLoginViewController.m; sourceTree = "<group>"; };
+		18BBC42118CB6B4F00F765EF /* WXYSelectLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYSelectLocationViewController.h; sourceTree = "<group>"; };
+		18BBC42218CB6B4F00F765EF /* WXYSelectLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYSelectLocationViewController.m; sourceTree = "<group>"; };
+		18BBC42518CB7C3600F765EF /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
+		18BBC42618CB7C3600F765EF /* CommonUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtility.m; sourceTree = "<group>"; };
+		18BBC42818CB7C8600F765EF /* LineDashPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDashPolyline.h; sourceTree = "<group>"; };
+		18BBC42918CB7C8600F765EF /* LineDashPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineDashPolyline.m; sourceTree = "<group>"; };
+		18BBC42B18CB875E00F765EF /* POIAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIAnnotation.h; sourceTree = "<group>"; };
+		18BBC42C18CB875E00F765EF /* POIAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIAnnotation.m; sourceTree = "<group>"; };
+		18BBC42F18CB90BC00F765EF /* WXYDriverRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYDriverRootViewController.h; sourceTree = "<group>"; };
+		18BBC43018CB90BC00F765EF /* WXYDriverRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYDriverRootViewController.m; sourceTree = "<group>"; };
+		18BBC43218CB90E600F765EF /* WXYDriverNewCustomerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYDriverNewCustomerViewController.h; sourceTree = "<group>"; };
+		18BBC43318CB90E600F765EF /* WXYDriverNewCustomerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYDriverNewCustomerViewController.m; sourceTree = "<group>"; };
+		18BBC43518CB91B300F765EF /* WXYOrderManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYOrderManagerViewController.h; sourceTree = "<group>"; };
+		18BBC43618CB91B300F765EF /* WXYOrderManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYOrderManagerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +109,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1845A43418CAF7DC00BFC213 /* AMapSearchKit.framework in Frameworks */,
+				18AFA49018E187DA00D07899 /* MAMapKit.framework in Frameworks */,
+				1845A44518CAF87900BFC213 /* Security.framework in Frameworks */,
+				1845A44318CAF87400BFC213 /* libstdc++.6.0.9.dylib in Frameworks */,
+				1845A44118CAF86A00BFC213 /* OpenGLES.framework in Frameworks */,
+				1845A43F18CAF86400BFC213 /* libz.dylib in Frameworks */,
+				1845A43D18CAF85D00BFC213 /* CoreTelephony.framework in Frameworks */,
+				1845A43B18CAF85500BFC213 /* SystemConfiguration.framework in Frameworks */,
+				1845A43918CAF84600BFC213 /* CoreLocation.framework in Frameworks */,
+				1845A43718CAF84000BFC213 /* QuartzCore.framework in Frameworks */,
 				181CCB9E18CA2538005B357B /* CoreGraphics.framework in Frameworks */,
 				181CCBA018CA2538005B357B /* UIKit.framework in Frameworks */,
 				181CCB9C18CA2538005B357B /* Foundation.framework in Frameworks */,
@@ -101,6 +160,14 @@
 		181CCB9A18CA2538005B357B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1845A44418CAF87900BFC213 /* Security.framework */,
+				1845A44218CAF87400BFC213 /* libstdc++.6.0.9.dylib */,
+				1845A44018CAF86A00BFC213 /* OpenGLES.framework */,
+				1845A43E18CAF86400BFC213 /* libz.dylib */,
+				1845A43C18CAF85D00BFC213 /* CoreTelephony.framework */,
+				1845A43A18CAF85500BFC213 /* SystemConfiguration.framework */,
+				1845A43818CAF84600BFC213 /* CoreLocation.framework */,
+				1845A43618CAF84000BFC213 /* QuartzCore.framework */,
 				181CCB9B18CA2538005B357B /* Foundation.framework */,
 				181CCB9D18CA2538005B357B /* CoreGraphics.framework */,
 				181CCB9F18CA2538005B357B /* UIKit.framework */,
@@ -112,13 +179,22 @@
 		181CCBA118CA2538005B357B /* Pingche_client */ = {
 			isa = PBXGroup;
 			children = (
+				18BBC42E18CB904C00F765EF /* driver */,
+				18BBC42418CB7C3600F765EF /* Utility */,
+				1845A43118CAF7DC00BFC213 /* gaodeLib */,
 				181CCBAA18CA2538005B357B /* WXYAppDelegate.h */,
 				181CCBAB18CA2538005B357B /* WXYAppDelegate.m */,
 				181CCBAD18CA2538005B357B /* Main.storyboard */,
-				181CCBB018CA2538005B357B /* WXYViewController.h */,
-				181CCBB118CA2538005B357B /* WXYViewController.m */,
+				181CCBB018CA2538005B357B /* WXYMapViewController.h */,
+				181CCBB118CA2538005B357B /* WXYMapViewController.m */,
 				181CCBB318CA2538005B357B /* Images.xcassets */,
 				181CCBA218CA2538005B357B /* Supporting Files */,
+				18BBC41B18CB6ADB00F765EF /* WXYRootViewController.h */,
+				18BBC41C18CB6ADB00F765EF /* WXYRootViewController.m */,
+				18BBC41E18CB6AFA00F765EF /* WXYLoginViewController.h */,
+				18BBC41F18CB6AFA00F765EF /* WXYLoginViewController.m */,
+				18BBC42118CB6B4F00F765EF /* WXYSelectLocationViewController.h */,
+				18BBC42218CB6B4F00F765EF /* WXYSelectLocationViewController.m */,
 			);
 			path = Pingche_client;
 			sourceTree = "<group>";
@@ -150,6 +226,42 @@
 				181CCBC318CA2538005B357B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1845A43118CAF7DC00BFC213 /* gaodeLib */ = {
+			isa = PBXGroup;
+			children = (
+				1845A44618CAF8B000BFC213 /* AMap.bundle */,
+				1845A43218CAF7DC00BFC213 /* AMapSearchKit.framework */,
+				1845A43318CAF7DC00BFC213 /* MAMapKit.framework */,
+			);
+			path = gaodeLib;
+			sourceTree = "<group>";
+		};
+		18BBC42418CB7C3600F765EF /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				18BBC42B18CB875E00F765EF /* POIAnnotation.h */,
+				18BBC42C18CB875E00F765EF /* POIAnnotation.m */,
+				18BBC42818CB7C8600F765EF /* LineDashPolyline.h */,
+				18BBC42918CB7C8600F765EF /* LineDashPolyline.m */,
+				18BBC42518CB7C3600F765EF /* CommonUtility.h */,
+				18BBC42618CB7C3600F765EF /* CommonUtility.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		18BBC42E18CB904C00F765EF /* driver */ = {
+			isa = PBXGroup;
+			children = (
+				18BBC42F18CB90BC00F765EF /* WXYDriverRootViewController.h */,
+				18BBC43018CB90BC00F765EF /* WXYDriverRootViewController.m */,
+				18BBC43218CB90E600F765EF /* WXYDriverNewCustomerViewController.h */,
+				18BBC43318CB90E600F765EF /* WXYDriverNewCustomerViewController.m */,
+				18BBC43518CB91B300F765EF /* WXYOrderManagerViewController.h */,
+				18BBC43618CB91B300F765EF /* WXYOrderManagerViewController.m */,
+			);
+			name = driver;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +343,7 @@
 			files = (
 				181CCBB418CA2538005B357B /* Images.xcassets in Resources */,
 				181CCBA618CA2538005B357B /* InfoPlist.strings in Resources */,
+				1845A44718CAF8B000BFC213 /* AMap.bundle in Resources */,
 				181CCBAF18CA2538005B357B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,9 +363,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18BBC43418CB90E600F765EF /* WXYDriverNewCustomerViewController.m in Sources */,
+				18BBC42018CB6AFA00F765EF /* WXYLoginViewController.m in Sources */,
+				18BBC42A18CB7C8600F765EF /* LineDashPolyline.m in Sources */,
 				181CCBA818CA2538005B357B /* main.m in Sources */,
-				181CCBB218CA2538005B357B /* WXYViewController.m in Sources */,
+				18BBC43718CB91B300F765EF /* WXYOrderManagerViewController.m in Sources */,
+				18BBC43118CB90BC00F765EF /* WXYDriverRootViewController.m in Sources */,
+				18BBC41D18CB6ADB00F765EF /* WXYRootViewController.m in Sources */,
+				181CCBB218CA2538005B357B /* WXYMapViewController.m in Sources */,
+				18BBC42D18CB875E00F765EF /* POIAnnotation.m in Sources */,
+				18BBC42318CB6B4F00F765EF /* WXYSelectLocationViewController.m in Sources */,
 				181CCBAC18CA2538005B357B /* WXYAppDelegate.m in Sources */,
+				18BBC42718CB7C3600F765EF /* CommonUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +458,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = /Users/apple/developer/Jiaoke/project/Pingche_client/Pingche_client/gaodeLib;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -369,6 +492,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = /Users/apple/developer/Jiaoke/project/Pingche_client/Pingche_client/gaodeLib;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -379,9 +503,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/apple/developer/交科/project/Pingche_client/Pingche_client/gaodeLib",
+					"$(PROJECT_DIR)/Pingche_client/gaodeLib",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pingche_client/Pingche_client-Prefix.pch";
 				INFOPLIST_FILE = "Pingche_client/Pingche_client-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -392,9 +522,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/apple/developer/交科/project/Pingche_client/Pingche_client/gaodeLib",
+					"$(PROJECT_DIR)/Pingche_client/gaodeLib",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Pingche_client/Pingche_client-Prefix.pch";
 				INFOPLIST_FILE = "Pingche_client/Pingche_client-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -461,6 +597,7 @@
 				181CCBCC18CA2538005B357B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		181CCBCD18CA2538005B357B /* Build configuration list for PBXNativeTarget "Pingche_clientTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +606,7 @@
 				181CCBCF18CA2538005B357B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
