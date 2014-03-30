@@ -11,6 +11,8 @@
 #import "CommonUtility.h"
 #import "LineDashPolyline.h"
 #import "POIAnnotation.h"
+#import "WXYNetworkEngine.h"
+#import "UIViewController+ShowHud.h"
 
 
 @interface WXYDriverRootViewController ()
@@ -19,18 +21,40 @@
 
 @property (strong, nonatomic) MAMapView* mapView;
 @property (strong, nonatomic) AMapSearchAPI* search;
-@property (strong, nonatomic) POIAnnotation* driver;
-@property (strong, nonatomic) POIAnnotation* siping;
-@property (strong, nonatomic) POIAnnotation* jiading;
-@property (strong, nonatomic) POIAnnotation* wujiao;
+//@property (strong, nonatomic) POIAnnotation* driver;
+//@property (strong, nonatomic) POIAnnotation* siping;
+//@property (strong, nonatomic) POIAnnotation* jiading;
+//@property (strong, nonatomic) POIAnnotation* wujiao;
 
 @property (strong, nonatomic) NSArray* polylines;
 @property (assign, nonatomic) CLLocationCoordinate2D location;
 @property (assign, nonatomic) BOOL fFirstLocationUpdate;
+
+
+//Timer
+@property (strong, nonatomic) NSTimer* locationUpdateTimer;
 @end
 
 @implementation WXYDriverRootViewController
+#pragma mark - Timer
+- (NSTimer*)locationUpdateTimer
+{
+    if (!_locationUpdateTimer)
+    {
+        _locationUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1.f target:self selector:@selector(updateLocation) userInfo:nil repeats:YES];
+    }
+    return _locationUpdateTimer;
+}
+- (void)restartAllTimer
+{
+    [self.locationUpdateTimer setFireDate:[NSDate distantPast]];
+}
+- (void)stopAllTimer
+{
+    [self.locationUpdateTimer setFireDate:[NSDate distantFuture]];
+}
 
+#pragma mark -
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -40,20 +64,22 @@
     return self;
 }
 
+#pragma mark - Life Cycle
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.number = 1;
-    self.fFirstLocationUpdate = NO;
+    self.fFirstLocationUpdate = YES;
     
     self.search = [[AMapSearchAPI alloc] initWithSearchKey:@"7b8460b48a80fdd39af6191245021353" Delegate:self];
     
     self.mapView = [[MAMapView alloc] initWithFrame:self.contentView.bounds];
+    self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
     [self.contentView addSubview:self.mapView];
  
-    
+    /*
     self.driver  = [[POIAnnotation alloc] init];
     self.driver.coordinate = CLLocationCoordinate2DMake(31.280092, 121.215714);
     self.driver.title = @"当前位置";
@@ -70,14 +96,15 @@
     self.wujiao = [[POIAnnotation alloc] init];
     self.wujiao.coordinate = CLLocationCoordinate2DMake(31.299059, 121.514160);
     self.wujiao.title = @"五角场";
-
+     */
     [self.mapView setZoomLevel:12.f];
-    [self.mapView setCenterCoordinate:self.driver.coordinate animated:NO];
+//    [self.mapView setCenterCoordinate:self.driver.coordinate animated:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    /*
     [self.mapView removeAnnotations:@[self.driver,self.jiading,self.siping,self.wujiao]];
     if (self.number == 1)
     {
@@ -87,6 +114,19 @@
     {
         [self.mapView addAnnotations:@[self.driver,self.jiading,self.siping,self.wujiao]];
     }
+    */
+    //Timer
+    [self restartAllTimer];
+//    [self.locationUpdateTimer fire];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    //Timer
+//    [self.locationUpdateTimer invalidate];
+    [self stopAllTimer];
     
 }
 
@@ -123,6 +163,7 @@
     }
     p.canShowCallout = YES;
     
+    /*
     if (annotation == self.driver)
     {
         p.pinColor = MAPinAnnotationColorGreen;
@@ -141,7 +182,7 @@
     {
         p.pinColor = MAPinAnnotationColorPurple;
     }
-    
+    */
     
     //    annotationView.rightCalloutAccessoryView=[UIButton buttonWithType:UIButtonTypeDetailDisclosure];    return annotationView;
     return p;
@@ -149,20 +190,18 @@
 
 -(void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation
 {
-    if (self.fFirstLocationUpdate)
-    {
-        CLLocationCoordinate2D userL = userLocation.coordinate;
-        self.location = userL;
-        
-        [self.mapView setCenterCoordinate:userL animated:NO];
-        self.fFirstLocationUpdate = NO;
 
-        //        AMapNavigationSearchRequest *naviRequest= [[AMapNavigationSearchRequest alloc] init]; naviRequest.searchType = AMapSearchType_NaviDrive;
-        //        naviRequest.requireExtension = YES;
-        //        naviRequest.origin = [AMapGeoPoint locationWithLatitude:39.994949 longitude:116.447265];
-        //        naviRequest.destination = [AMapGeoPoint locationWithLatitude:39.990459 longitude:116.481476];
-        //        [self.search AMapNavigationSearch: naviRequest];
-    }
+    CLLocationCoordinate2D userL = userLocation.coordinate;
+    self.location = userL;
+    
+    [self.mapView setCenterCoordinate:userL animated:NO];
+    self.fFirstLocationUpdate = NO;
+
+    //        AMapNavigationSearchRequest *naviRequest= [[AMapNavigationSearchRequest alloc] init]; naviRequest.searchType = AMapSearchType_NaviDrive;
+    //        naviRequest.requireExtension = YES;
+    //        naviRequest.origin = [AMapGeoPoint locationWithLatitude:39.994949 longitude:116.447265];
+    //        naviRequest.destination = [AMapGeoPoint locationWithLatitude:39.990459 longitude:116.481476];
+    //        [self.search AMapNavigationSearch: naviRequest];
     
 }
 
@@ -177,14 +216,14 @@
 }
 - (IBAction)currentButtonPressed:(id)sender
 {
-    [self.mapView setCenterCoordinate:self.driver.coordinate animated:YES];
+//    [self.mapView setCenterCoordinate:self.driver.coordinate animated:YES];
 }
 - (IBAction)rbt:(id)sender {
 //    CLLocationCoordinate2D userL = self.location;
     AMapNavigationSearchRequest *naviRequest= [[AMapNavigationSearchRequest alloc] init];
     naviRequest.searchType = AMapSearchType_NaviDrive;
     naviRequest.requireExtension = YES;
-    
+    /*
     naviRequest.origin = [AMapGeoPoint locationWithLatitude:self.driver.coordinate.latitude longitude:self.driver.coordinate.longitude];
     if (self.number == 2)
     {
@@ -193,7 +232,7 @@
 
     
     naviRequest.destination = [AMapGeoPoint locationWithLatitude:self.wujiao.coordinate.latitude longitude:self.wujiao.coordinate.longitude];
-    
+    */
     [self.search AMapNavigationSearch: naviRequest];
     
 }
@@ -224,6 +263,19 @@
     }
     
     return nil;
+}
+
+#pragma mark - Location
+- (void)updateLocation
+{
+    if (!self.fFirstLocationUpdate)
+    {
+        [SHARE_NW_ENGINE driverUpdateLocation:self.location onSucceed:^{
+            
+        } onError:^(NSError *error) {
+            
+        }];
+    }
 }
 
 
