@@ -31,6 +31,31 @@ typedef NS_ENUM(NSInteger, GetOrderType)
                          onError:(ErrorBlock)errorBlock;
 
 #pragma mark - Customer
+- (MKNetworkOperation*)customerSearchDriver:(CLLocationCoordinate2D)from
+                                         to:(CLLocationCoordinate2D)to
+                                       type:(OrderType)type
+                                     reject:(NSArray*)rejectedDriverIdArray
+                                  onSucceed:(void(^)(DriverInfo* driver))succeedBlock
+                                    onError:(ErrorBlock)errorBlock;
+
+- (MKNetworkOperation*)customerCreateOrder:(NSNumber*)driverId
+                                      type:(OrderType)type
+                                maleNumber:(NSNumber*)maleNumber
+                              femaleNumber:(NSNumber*)femaleNumber
+                                      from:(CLLocationCoordinate2D)from
+                                        to:(CLLocationCoordinate2D)to
+                                 onSucceed:(void(^)(OrderEntity* order))succeedBlock
+                                   onError:(ErrorBlock)errorBlock;
+
+- (MKNetworkOperation*)customerGetOrderOnSucceed:(void(^)(OrderEntity* order))succeedBlock
+                                         onError:(ErrorBlock)errorBlock;
+
+- (MKNetworkOperation*)customerGetNearDriver:(CLLocationCoordinate2D)location
+                               deltaLatitude:(float)deltaLa
+                              deltaLongitude:(float)deltaLo
+                                   onSucceed:(ArrayBlock)succeedBlock
+                                     onError:(ErrorBlock)errorBlock;
+
 
 #pragma mark - Driver
 - (MKNetworkOperation*)driverUpdateLocation:(CLLocationCoordinate2D)location

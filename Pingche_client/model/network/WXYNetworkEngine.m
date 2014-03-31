@@ -22,11 +22,17 @@
 #define URL_USER_LOGOUT @"user_logout"
 
 //Customer
+#define URL_CUSTOMER_SEARCH_DRIVER @"customer/search_driver"
+#define URL_CUSTOMER_CREATE_ORDER @"customer/create_order"
+#define URL_CUSTOMER_GET_ORDER @"customer/get_order"
+#define URL_CUSTOMER_GET_NEAR_DRIVER @"customer/get_near_driver"
 
 //Driver
 #define URL_DRIVER_UPDATE_LOCATION @"driver/update_location"
 #define URL_DRIVER_GET_ORDER @"driver/get_order"
 #define URL_DRIVER_UPDATE_ORDER @"driver/update_order"
+
+
 
 
 @interface WXYNetworkEngine ()
@@ -145,7 +151,159 @@
     
     return op;
 }
+#pragma mark - Customer
+- (MKNetworkOperation*)customerSearchDriver:(CLLocationCoordinate2D)from
+                                         to:(CLLocationCoordinate2D)to
+                                       type:(OrderType)type
+                                     reject:(NSArray*)rejectedDriverIdArray
+                                  onSucceed:(void(^)(DriverInfo* driver))succeedBlock
+                                    onError:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    NSMutableString* str = [@"" mutableCopy];
+    BOOL f = NO;
+    for (NSNumber* driverId in rejectedDriverIdArray)
+    {
+        if (f)
+        {
+            [str appendString:@"|"];
+        }
+        [str appendFormat:@"%@",driverId];
+        f = YES;
+    }
+    
+    op = [self startOperationWithPath:URL_CUSTOMER_SEARCH_DRIVER
+                            needLogin:YES
+                             paramers:@{@"order_type":@(type),
+                                        @"latitude":@(from.latitude),
+                                        @"longitude":@(from.longitude),
+                                        @"des_latitude":@(to.latitude),
+                                        @"des_longitude":@(to.longitude),
+                                        @"reject_driver_ids":str}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+    {
+        if (succeedBlock)
+        {
+            NSDictionary* dict = completedOperation.responseJSON;
+            DriverInfo* d = [[DriverInfo alloc] initWithDict:dict];
+            succeedBlock(d);
+        }
+    }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+    {
+        if (errorBlock)
+        {
+            errorBlock(error);
+        }
+    }];
+    
+    return op;
+}
 
+- (MKNetworkOperation*)customerCreateOrder:(NSNumber*)driverId
+                                      type:(OrderType)type
+                                maleNumber:(NSNumber*)maleNumber
+                              femaleNumber:(NSNumber*)femaleNumber
+                                      from:(CLLocationCoordinate2D)from
+                                        to:(CLLocationCoordinate2D)to
+                                 onSucceed:(void(^)(OrderEntity* order))succeedBlock
+                                   onError:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:URL_CUSTOMER_CREATE_ORDER
+                            needLogin:YES
+                             paramers:@{
+                                        @"driver_id":driverId,
+                                        @"order_type":@(type),
+                                        @"male_number":maleNumber,
+                                        @"female_number":femaleNumber,
+                                        @"latitude":@(from.latitude),
+                                        @"longitude":@(from.longitude),
+                                        @"des_latitude":@(to.latitude),
+                                        @"des_longitude":@(to.longitude),
+                                        }
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              if (succeedBlock)
+              {
+                  NSDictionary* dict = completedOperation.responseJSON;
+                  OrderEntity* o = [[OrderEntity alloc] initWithDict:dict];
+                  succeedBlock(o);
+              }
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    return op;
+}
+
+- (MKNetworkOperation*)customerGetOrderOnSucceed:(void(^)(OrderEntity* order))succeedBlock
+                                         onError:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:URL_CUSTOMER_GET_ORDER needLogin:YES paramers:@{} onSucceeded:^(MKNetworkOperation *completedOperation) {
+        if (succeedBlock)
+        {
+            NSDictionary* dict = completedOperation.responseJSON;
+            OrderEntity* o = [[OrderEntity alloc] initWithDict:dict];
+            succeedBlock(o);
+        }
+    } onError:^(MKNetworkOperation *completedOperation, NSError *error) {
+        if (errorBlock)
+        {
+            errorBlock(error);
+        }
+    }];
+    return op;
+}
+
+
+- (MKNetworkOperation*)customerGetNearDriver:(CLLocationCoordinate2D)location
+                               deltaLatitude:(float)deltaLa
+                              deltaLongitude:(float)deltaLo
+                                   onSucceed:(ArrayBlock)succeedBlock
+                                     onError:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:URL_CUSTOMER_GET_NEAR_DRIVER
+                            needLogin:YES
+                             paramers:@{
+                                        @"latitude":@(location.latitude),
+                                        @"longitude":@(location.longitude),
+                                        @"delta_latitude":@(deltaLa),
+                                        @"delta_longitude":@(deltaLo),
+                                        }
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              if (succeedBlock)
+              {
+                  NSArray* responseArray = completedOperation.responseJSON;
+                  NSMutableArray* r = [@[] mutableCopy];
+                  for (NSDictionary* dict in responseArray)
+                  {
+                      DriverInfo* d = [[DriverInfo alloc] initWithDict:dict];
+                      [r addObject:d];
+                  }
+                  succeedBlock(r);
+              }
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    
+    return op;
+}
 
 #pragma mark - Driver
 - (MKNetworkOperation*)driverUpdateLocation:(CLLocationCoordinate2D)location
@@ -240,5 +398,7 @@
     
     return op;
 }
+
+
 
 @end
