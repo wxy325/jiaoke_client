@@ -9,6 +9,7 @@
 #import "UserInfo.h"
 #import "CustomerInfo.h"
 #import "DriverInfo.h"
+#import "OrderEntity.h"
 
 #import <Foundation/Foundation.h>
 

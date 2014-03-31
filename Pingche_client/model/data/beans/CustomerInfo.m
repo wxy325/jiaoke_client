@@ -10,4 +10,15 @@
 
 @implementation CustomerInfo
 
+- (id)initWithDict:(NSDictionary*)dict
+{
+    self = [super init];
+    if (self)
+    {
+        self.customerId = dict[@"customer_id"];
+        self.realName = dict[@"real_name"];
+    }
+    return self;
+}
+
 @end

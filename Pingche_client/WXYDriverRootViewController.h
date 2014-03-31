@@ -9,9 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapSearchAPI.h>
+#import "WXYDriverNewOrderNotifyView.h"
 
 @interface WXYDriverRootViewController : UIViewController<MAMapViewDelegate, AMapSearchDelegate>
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 - (IBAction)currentButtonPressed:(id)sender;
 - (IBAction)rbt:(id)sender ;
+
+- (IBAction)newOrderSubmitButtonPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet WXYDriverNewOrderNotifyView *getNewOrderNotifyView;
+
 @end

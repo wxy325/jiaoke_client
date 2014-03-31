@@ -10,4 +10,10 @@
 
 @interface CustomerInfo : NSObject
 
+
+- (id)initWithDict:(NSDictionary*)dict;
+
+@property (strong, nonatomic) NSNumber* customerId;
+@property (strong, nonatomic) NSString* realName;
+
 @end

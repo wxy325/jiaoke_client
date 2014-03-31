@@ -25,6 +25,8 @@
 
 //Driver
 #define URL_DRIVER_UPDATE_LOCATION @"driver/update_location"
+#define URL_DRIVER_GET_ORDER @"driver/get_order"
+#define URL_DRIVER_UPDATE_ORDER @"driver/update_order"
 
 
 @interface WXYNetworkEngine ()
@@ -174,5 +176,69 @@
     return op;
 }
 
+
+
+- (MKNetworkOperation*)driverGetOrderState:(GetOrderType)type
+                                 onSucceed:(ArrayBlock)succeedBlock
+                                   onError:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:URL_DRIVER_GET_ORDER
+                            needLogin:YES
+                             paramers:@{@"type":@(type)}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+    {
+        if (succeedBlock)
+        {
+            NSArray* responseArray = completedOperation.responseJSON;
+            NSMutableArray* array = [@[] mutableCopy];
+            for (NSDictionary* dict in responseArray)
+            {
+                OrderEntity* o = [[OrderEntity alloc] initWithDict:dict];
+                [array addObject:o];
+            }
+            succeedBlock(array);
+        }
+    }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+    {
+        if (errorBlock)
+        {
+            errorBlock(error);
+        }
+    }];
+    
+    return op;
+}
+
+- (MKNetworkOperation*)driverUpdateOrderOrderId:(NSNumber*)orderId
+                                          state:(OrderState)state
+                                    onSucceed:(VoidBlock)succeedBlock
+                                      onError:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:URL_DRIVER_UPDATE_ORDER
+                            needLogin:YES
+                             paramers:@{@"order_id":orderId,
+                                        @"order_state":@(state)}
+                          onSucceeded:^(MKNetworkOperation *completedOperation)
+          {
+              if (succeedBlock)
+              {
+                  succeedBlock();
+              }
+          }
+                              onError:^(MKNetworkOperation *completedOperation, NSError *error)
+          {
+              if (errorBlock)
+              {
+                  errorBlock(error);
+              }
+          }];
+    
+    return op;
+}
 
 @end

@@ -56,6 +56,8 @@
 		184B40B618E8710100062C59 /* exclamationmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 184B40B218E8710100062C59 /* exclamationmark@2x.png */; };
 		184B40B918E8741A00062C59 /* DriverInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B40B818E8741A00062C59 /* DriverInfo.m */; };
 		184B40BC18E8742600062C59 /* CustomerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B40BB18E8742600062C59 /* CustomerInfo.m */; };
+		184B40BF18E8891C00062C59 /* OrderEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B40BE18E8891C00062C59 /* OrderEntity.m */; };
+		184B40C318E99E4500062C59 /* WXYDriverNewOrderNotifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B40C218E99E4500062C59 /* WXYDriverNewOrderNotifyView.m */; };
 		18AFA49018E187DA00D07899 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1845A43318CAF7DC00BFC213 /* MAMapKit.framework */; };
 		18BBC41D18CB6ADB00F765EF /* WXYRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC41C18CB6ADB00F765EF /* WXYRootViewController.m */; };
 		18BBC42018CB6AFA00F765EF /* WXYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC41F18CB6AFA00F765EF /* WXYLoginViewController.m */; };
@@ -168,6 +170,10 @@
 		184B40B818E8741A00062C59 /* DriverInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverInfo.m; sourceTree = "<group>"; };
 		184B40BA18E8742600062C59 /* CustomerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerInfo.h; sourceTree = "<group>"; };
 		184B40BB18E8742600062C59 /* CustomerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerInfo.m; sourceTree = "<group>"; };
+		184B40BD18E8891C00062C59 /* OrderEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderEntity.h; sourceTree = "<group>"; };
+		184B40BE18E8891C00062C59 /* OrderEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderEntity.m; sourceTree = "<group>"; };
+		184B40C118E99E4500062C59 /* WXYDriverNewOrderNotifyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYDriverNewOrderNotifyView.h; sourceTree = "<group>"; };
+		184B40C218E99E4500062C59 /* WXYDriverNewOrderNotifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYDriverNewOrderNotifyView.m; sourceTree = "<group>"; };
 		18BBC41B18CB6ADB00F765EF /* WXYRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYRootViewController.h; sourceTree = "<group>"; };
 		18BBC41C18CB6ADB00F765EF /* WXYRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYRootViewController.m; sourceTree = "<group>"; };
 		18BBC41E18CB6AFA00F765EF /* WXYLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYLoginViewController.h; sourceTree = "<group>"; };
@@ -376,6 +382,8 @@
 				184B40B818E8741A00062C59 /* DriverInfo.m */,
 				184B40BA18E8742600062C59 /* CustomerInfo.h */,
 				184B40BB18E8742600062C59 /* CustomerInfo.m */,
+				184B40BD18E8891C00062C59 /* OrderEntity.h */,
+				184B40BE18E8891C00062C59 /* OrderEntity.m */,
 			);
 			path = beans;
 			sourceTree = "<group>";
@@ -518,6 +526,15 @@
 			path = hud;
 			sourceTree = "<group>";
 		};
+		184B40C018E99E1E00062C59 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				184B40C118E99E4500062C59 /* WXYDriverNewOrderNotifyView.h */,
+				184B40C218E99E4500062C59 /* WXYDriverNewOrderNotifyView.m */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
 		18BBC42418CB7C3600F765EF /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -534,6 +551,7 @@
 		18BBC42E18CB904C00F765EF /* driver */ = {
 			isa = PBXGroup;
 			children = (
+				184B40C018E99E1E00062C59 /* views */,
 				18BBC42F18CB90BC00F765EF /* WXYDriverRootViewController.h */,
 				18BBC43018CB90BC00F765EF /* WXYDriverRootViewController.m */,
 				18BBC43218CB90E600F765EF /* WXYDriverNewCustomerViewController.h */,
@@ -666,6 +684,7 @@
 				18BBC43418CB90E600F765EF /* WXYDriverNewCustomerViewController.m in Sources */,
 				184B408518E8708100062C59 /* UIViewController+ShowHud.m in Sources */,
 				184B409818E8708100062C59 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
+				184B40BF18E8891C00062C59 /* OrderEntity.m in Sources */,
 				18BBC42018CB6AFA00F765EF /* WXYLoginViewController.m in Sources */,
 				184B409C18E8708100062C59 /* Reachability.m in Sources */,
 				18BBC42A18CB7C8600F765EF /* LineDashPolyline.m in Sources */,
@@ -687,6 +706,7 @@
 				18BBC42D18CB875E00F765EF /* POIAnnotation.m in Sources */,
 				184B409018E8708100062C59 /* WXYNetworkEngine.m in Sources */,
 				184B40BC18E8742600062C59 /* CustomerInfo.m in Sources */,
+				184B40C318E99E4500062C59 /* WXYDriverNewOrderNotifyView.m in Sources */,
 				184B409518E8708100062C59 /* NSDate+RFC1123.m in Sources */,
 				184B408E18E8708100062C59 /* WXYDataModel.m in Sources */,
 				184B409318E8708100062C59 /* NSAlert+MKNetworkKitAdditions.m in Sources */,

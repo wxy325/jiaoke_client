@@ -12,6 +12,13 @@
 #import <CoreLocation/CoreLocation.h>
 
 #define SHARE_NW_ENGINE [WXYNetworkEngine shareNetworkEngine]
+typedef NS_ENUM(NSInteger, GetOrderType)
+{
+    GetOrderTypeNew = 0,
+    GetOrderTypeAll = 1,
+    GetOrderTypeHistory = 2
+};
+
 
 @interface WXYNetworkEngine : MKNetworkEngine
 
@@ -29,4 +36,12 @@
 - (MKNetworkOperation*)driverUpdateLocation:(CLLocationCoordinate2D)location
                                   onSucceed:(VoidBlock)succeedBlock
                                     onError:(ErrorBlock)errorBlock;
+
+- (MKNetworkOperation*)driverGetOrderState:(GetOrderType)type
+                                 onSucceed:(ArrayBlock)succeedBlock
+                                   onError:(ErrorBlock)errorBlock;
+- (MKNetworkOperation*)driverUpdateOrderOrderId:(NSNumber*)orderId
+                                          state:(OrderState)state
+                                      onSucceed:(VoidBlock)succeedBlock
+                                        onError:(ErrorBlock)errorBlock;
 @end

@@ -13,6 +13,7 @@
 #import "POIAnnotation.h"
 #import "WXYNetworkEngine.h"
 #import "UIViewController+ShowHud.h"
+#import "WXYSettingManager.h"
 
 
 @interface WXYDriverRootViewController ()
@@ -33,6 +34,10 @@
 
 //Timer
 @property (strong, nonatomic) NSTimer* locationUpdateTimer;
+@property (strong, nonatomic) NSTimer* checkNewOrderTimer;
+
+@property (strong, nonatomic) OrderEntity* getNewOrder;
+
 @end
 
 @implementation WXYDriverRootViewController
@@ -41,17 +46,27 @@
 {
     if (!_locationUpdateTimer)
     {
-        _locationUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:1.f target:self selector:@selector(updateLocation) userInfo:nil repeats:YES];
+        _locationUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:10.f target:self selector:@selector(updateLocation) userInfo:nil repeats:YES];
     }
     return _locationUpdateTimer;
+}
+- (NSTimer*)checkNewOrderTimer
+{
+    if (!_checkNewOrderTimer)
+    {
+        _checkNewOrderTimer = [NSTimer scheduledTimerWithTimeInterval:10.f target:self selector:@selector(checkNewOrder) userInfo:nil repeats:YES];
+    }
+    return _checkNewOrderTimer;
 }
 - (void)restartAllTimer
 {
     [self.locationUpdateTimer setFireDate:[NSDate distantPast]];
+    [self.checkNewOrderTimer setFireDate:[NSDate distantPast]];
 }
 - (void)stopAllTimer
 {
     [self.locationUpdateTimer setFireDate:[NSDate distantFuture]];
+    [self.checkNewOrderTimer setFireDate:[NSDate distantFuture]];
 }
 
 #pragma mark -
@@ -79,6 +94,17 @@
     self.mapView.delegate = self;
     [self.contentView addSubview:self.mapView];
  
+    
+    //获取司机当前订单信息，并更新路线
+    [SHARE_NW_ENGINE driverGetOrderState:GetOrderTypeAll onSucceed:^(NSArray *resultArray) {
+        [SHARE_SETTING_MANAGER.currentUserInfo.driverInfo.orderArray removeAllObjects];
+        [SHARE_SETTING_MANAGER.currentUserInfo.driverInfo.orderArray addObjectsFromArray:resultArray];
+        [self updateRoadInfo];
+    } onError:^(NSError *error) {
+//#warning 需要额外处理
+        [self showErrorHudWithText:@"系统错误，暂时无法获得当前订单"];
+    }];
+    
     /*
     self.driver  = [[POIAnnotation alloc] init];
     self.driver.coordinate = CLLocationCoordinate2DMake(31.280092, 121.215714);
@@ -239,6 +265,8 @@
 
 
 
+
+
 - (MAOverlayView *)mapView:(MAMapView *)mapView viewForOverlay:(id<MAOverlay>)overlay
 {
     if ([overlay isKindOfClass:[LineDashPolyline class]])
@@ -278,5 +306,65 @@
     }
 }
 
+
+#pragma mark - New Order Related
+- (void)checkNewOrder
+{
+    if (!self.getNewOrder)
+    {
+        [SHARE_NW_ENGINE driverGetOrderState:GetOrderTypeNew onSucceed:^(NSArray *resultArray) {
+            if (resultArray.count)
+            {
+                self.getNewOrder = resultArray[0];
+                [self notifyNewOrder];
+            }
+        } onError:^(NSError *error) {
+            
+        }];
+    }
+}
+
+- (void)notifyNewOrder
+{
+    [self.getNewOrderNotifyView bind:self.getNewOrder];
+    self.getNewOrderNotifyView.hidden = NO;
+    self.getNewOrderNotifyView.alpha = 0.f;
+    [UIView animateWithDuration:0.3f animations:^
+    {
+        self.getNewOrderNotifyView.alpha = 1.f;
+    }];
+}
+
+- (IBAction)newOrderSubmitButtonPressed:(id)sender
+{
+    MBProgressHUD* hud = [self showNetworkWaitingHud];
+    [SHARE_NW_ENGINE driverUpdateOrderOrderId:self.getNewOrder.orderId
+                                        state:OrderStateUnreceived
+                                    onSucceed:^
+     {
+         [hud hide:YES];
+         self.getNewOrder.state = OrderStateUnreceived;
+         [SHARE_SETTING_MANAGER.currentUserInfo.driverInfo.orderArray addObject:self.getNewOrder];
+         self.getNewOrder = nil;
+         [self updateRoadInfo];
+         [UIView animateWithDuration:0.3f animations:^
+          {
+              self.getNewOrderNotifyView.alpha = 0.f;
+          } completion:^(BOOL finished) {
+              self.getNewOrderNotifyView.hidden = YES;
+          }];
+     }
+     
+                                      onError:^(NSError *error)
+     {
+         [hud hide:YES];
+         [self showErrorHudWithError:error];
+     }];
+}
+
+- (void)updateRoadInfo
+{
+    
+}
 
 @end
