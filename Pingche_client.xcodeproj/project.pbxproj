@@ -58,6 +58,7 @@
 		184B40BC18E8742600062C59 /* CustomerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B40BB18E8742600062C59 /* CustomerInfo.m */; };
 		184B40BF18E8891C00062C59 /* OrderEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B40BE18E8891C00062C59 /* OrderEntity.m */; };
 		184B40C318E99E4500062C59 /* WXYDriverNewOrderNotifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B40C218E99E4500062C59 /* WXYDriverNewOrderNotifyView.m */; };
+		184B40C718E9CE2400062C59 /* WXYCustomerResultNotifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B40C618E9CE2400062C59 /* WXYCustomerResultNotifyView.m */; };
 		18AFA49018E187DA00D07899 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1845A43318CAF7DC00BFC213 /* MAMapKit.framework */; };
 		18BBC41D18CB6ADB00F765EF /* WXYRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC41C18CB6ADB00F765EF /* WXYRootViewController.m */; };
 		18BBC42018CB6AFA00F765EF /* WXYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC41F18CB6AFA00F765EF /* WXYLoginViewController.m */; };
@@ -174,6 +175,8 @@
 		184B40BE18E8891C00062C59 /* OrderEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderEntity.m; sourceTree = "<group>"; };
 		184B40C118E99E4500062C59 /* WXYDriverNewOrderNotifyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYDriverNewOrderNotifyView.h; sourceTree = "<group>"; };
 		184B40C218E99E4500062C59 /* WXYDriverNewOrderNotifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYDriverNewOrderNotifyView.m; sourceTree = "<group>"; };
+		184B40C518E9CE2400062C59 /* WXYCustomerResultNotifyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYCustomerResultNotifyView.h; sourceTree = "<group>"; };
+		184B40C618E9CE2400062C59 /* WXYCustomerResultNotifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYCustomerResultNotifyView.m; sourceTree = "<group>"; };
 		18BBC41B18CB6ADB00F765EF /* WXYRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYRootViewController.h; sourceTree = "<group>"; };
 		18BBC41C18CB6ADB00F765EF /* WXYRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYRootViewController.m; sourceTree = "<group>"; };
 		18BBC41E18CB6AFA00F765EF /* WXYLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYLoginViewController.h; sourceTree = "<group>"; };
@@ -286,8 +289,6 @@
 				18BBC41C18CB6ADB00F765EF /* WXYRootViewController.m */,
 				18BBC41E18CB6AFA00F765EF /* WXYLoginViewController.h */,
 				18BBC41F18CB6AFA00F765EF /* WXYLoginViewController.m */,
-				18BBC42118CB6B4F00F765EF /* WXYSelectLocationViewController.h */,
-				18BBC42218CB6B4F00F765EF /* WXYSelectLocationViewController.m */,
 			);
 			path = Pingche_client;
 			sourceTree = "<group>";
@@ -334,8 +335,11 @@
 		184B403818E86DD700062C59 /* customer */ = {
 			isa = PBXGroup;
 			children = (
+				184B40C418E9CDFD00062C59 /* view */,
 				181CCBB018CA2538005B357B /* WXYMapViewController.h */,
 				181CCBB118CA2538005B357B /* WXYMapViewController.m */,
+				18BBC42118CB6B4F00F765EF /* WXYSelectLocationViewController.h */,
+				18BBC42218CB6B4F00F765EF /* WXYSelectLocationViewController.m */,
 			);
 			name = customer;
 			sourceTree = "<group>";
@@ -535,6 +539,15 @@
 			name = views;
 			sourceTree = "<group>";
 		};
+		184B40C418E9CDFD00062C59 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				184B40C518E9CE2400062C59 /* WXYCustomerResultNotifyView.h */,
+				184B40C618E9CE2400062C59 /* WXYCustomerResultNotifyView.m */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
 		18BBC42418CB7C3600F765EF /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -706,6 +719,7 @@
 				18BBC42D18CB875E00F765EF /* POIAnnotation.m in Sources */,
 				184B409018E8708100062C59 /* WXYNetworkEngine.m in Sources */,
 				184B40BC18E8742600062C59 /* CustomerInfo.m in Sources */,
+				184B40C718E9CE2400062C59 /* WXYCustomerResultNotifyView.m in Sources */,
 				184B40C318E99E4500062C59 /* WXYDriverNewOrderNotifyView.m in Sources */,
 				184B409518E8708100062C59 /* NSDate+RFC1123.m in Sources */,
 				184B408E18E8708100062C59 /* WXYDataModel.m in Sources */,

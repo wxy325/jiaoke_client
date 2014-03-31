@@ -28,4 +28,16 @@
 
 - (IBAction)hideKeyboard;
 - (IBAction)showSearchView:(id)sender;
+
+
+- (IBAction)createOrderButtonPressed:(id)sender;
+- (IBAction)researchButtonPressed:(id)sender;
+
+@property (strong, nonatomic) NSString* desTitle;
+@property (assign, nonatomic) CLLocationCoordinate2D desLocation;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *typeSegment;
+
+
+@property (weak, nonatomic) IBOutlet WXYCustomerResultNotifyView *customerResultNotifyView;
+
 @end

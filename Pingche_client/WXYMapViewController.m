@@ -11,6 +11,7 @@
 #import "LineDashPolyline.h"
 #import "POIAnnotation.h"
 #import "WXYSelectLocationViewController.h"
+#import "WXYCustomerResultNotifyView.h"
 
 @interface WXYMapViewController ()
 
@@ -334,7 +335,16 @@
 {
     [self hideKeyboard];
     WXYSelectLocationViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"WXYSelectLocationViewController"];
+    vc.mapVC = self;
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+
+#pragma mark - IBAction
+- (IBAction)createOrderButtonPressed:(id)sender {
+}
+
+- (IBAction)researchButtonPressed:(id)sender {
 }
 
 @end

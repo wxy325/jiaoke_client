@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MAMapKit/MAMapKit.h>
+#import <AMapSearchKit/AMapSearchAPI.h>
 
-@interface WXYSelectLocationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@class WXYMapViewController;
+
+@interface WXYSelectLocationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, AMapSearchDelegate>
+
+@property (weak, nonatomic) WXYMapViewController* mapVC;
+- (IBAction)backButtonPressed:(id)sender;
+
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
