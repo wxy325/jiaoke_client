@@ -21,6 +21,8 @@
 		181CCBBD18CA2538005B357B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 181CCB9F18CA2538005B357B /* UIKit.framework */; };
 		181CCBC518CA2538005B357B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 181CCBC318CA2538005B357B /* InfoPlist.strings */; };
 		181CCBC718CA2538005B357B /* Pingche_clientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 181CCBC618CA2538005B357B /* Pingche_clientTests.m */; };
+		1828E62618EB0361000519F5 /* WXYTextAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1828E62518EB0361000519F5 /* WXYTextAnnotation.m */; };
+		1828E62918EB039B000519F5 /* WXYCustomerInfoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1828E62818EB039B000519F5 /* WXYCustomerInfoAnnotation.m */; };
 		1845A43418CAF7DC00BFC213 /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1845A43218CAF7DC00BFC213 /* AMapSearchKit.framework */; };
 		1845A43718CAF84000BFC213 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1845A43618CAF84000BFC213 /* QuartzCore.framework */; };
 		1845A43918CAF84600BFC213 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1845A43818CAF84600BFC213 /* CoreLocation.framework */; };
@@ -65,7 +67,7 @@
 		18BBC42318CB6B4F00F765EF /* WXYSelectLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC42218CB6B4F00F765EF /* WXYSelectLocationViewController.m */; };
 		18BBC42718CB7C3600F765EF /* CommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC42618CB7C3600F765EF /* CommonUtility.m */; };
 		18BBC42A18CB7C8600F765EF /* LineDashPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC42918CB7C8600F765EF /* LineDashPolyline.m */; };
-		18BBC42D18CB875E00F765EF /* POIAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC42C18CB875E00F765EF /* POIAnnotation.m */; };
+		18BBC42D18CB875E00F765EF /* DriverInfoAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC42C18CB875E00F765EF /* DriverInfoAnnotation.m */; };
 		18BBC43118CB90BC00F765EF /* WXYDriverRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC43018CB90BC00F765EF /* WXYDriverRootViewController.m */; };
 		18BBC43418CB90E600F765EF /* WXYDriverNewCustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC43318CB90E600F765EF /* WXYDriverNewCustomerViewController.m */; };
 		18BBC43718CB91B300F765EF /* WXYOrderManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC43618CB91B300F765EF /* WXYOrderManagerViewController.m */; };
@@ -108,6 +110,10 @@
 		181CCBC218CA2538005B357B /* Pingche_clientTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pingche_clientTests-Info.plist"; sourceTree = "<group>"; };
 		181CCBC418CA2538005B357B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		181CCBC618CA2538005B357B /* Pingche_clientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pingche_clientTests.m; sourceTree = "<group>"; };
+		1828E62418EB0361000519F5 /* WXYTextAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYTextAnnotation.h; sourceTree = "<group>"; };
+		1828E62518EB0361000519F5 /* WXYTextAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYTextAnnotation.m; sourceTree = "<group>"; };
+		1828E62718EB039B000519F5 /* WXYCustomerInfoAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYCustomerInfoAnnotation.h; sourceTree = "<group>"; };
+		1828E62818EB039B000519F5 /* WXYCustomerInfoAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYCustomerInfoAnnotation.m; sourceTree = "<group>"; };
 		1845A43218CAF7DC00BFC213 /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
 		1845A43318CAF7DC00BFC213 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		1845A43618CAF84000BFC213 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -187,8 +193,8 @@
 		18BBC42618CB7C3600F765EF /* CommonUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtility.m; sourceTree = "<group>"; };
 		18BBC42818CB7C8600F765EF /* LineDashPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineDashPolyline.h; sourceTree = "<group>"; };
 		18BBC42918CB7C8600F765EF /* LineDashPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineDashPolyline.m; sourceTree = "<group>"; };
-		18BBC42B18CB875E00F765EF /* POIAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIAnnotation.h; sourceTree = "<group>"; };
-		18BBC42C18CB875E00F765EF /* POIAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIAnnotation.m; sourceTree = "<group>"; };
+		18BBC42B18CB875E00F765EF /* DriverInfoAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverInfoAnnotation.h; sourceTree = "<group>"; };
+		18BBC42C18CB875E00F765EF /* DriverInfoAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverInfoAnnotation.m; sourceTree = "<group>"; };
 		18BBC42F18CB90BC00F765EF /* WXYDriverRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYDriverRootViewController.h; sourceTree = "<group>"; };
 		18BBC43018CB90BC00F765EF /* WXYDriverRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYDriverRootViewController.m; sourceTree = "<group>"; };
 		18BBC43218CB90E600F765EF /* WXYDriverNewCustomerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYDriverNewCustomerViewController.h; sourceTree = "<group>"; };
@@ -551,12 +557,16 @@
 		18BBC42418CB7C3600F765EF /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				18BBC42B18CB875E00F765EF /* POIAnnotation.h */,
-				18BBC42C18CB875E00F765EF /* POIAnnotation.m */,
+				18BBC42B18CB875E00F765EF /* DriverInfoAnnotation.h */,
+				18BBC42C18CB875E00F765EF /* DriverInfoAnnotation.m */,
 				18BBC42818CB7C8600F765EF /* LineDashPolyline.h */,
 				18BBC42918CB7C8600F765EF /* LineDashPolyline.m */,
 				18BBC42518CB7C3600F765EF /* CommonUtility.h */,
 				18BBC42618CB7C3600F765EF /* CommonUtility.m */,
+				1828E62418EB0361000519F5 /* WXYTextAnnotation.h */,
+				1828E62518EB0361000519F5 /* WXYTextAnnotation.m */,
+				1828E62718EB039B000519F5 /* WXYCustomerInfoAnnotation.h */,
+				1828E62818EB039B000519F5 /* WXYCustomerInfoAnnotation.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -699,6 +709,7 @@
 				184B409818E8708100062C59 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				184B40BF18E8891C00062C59 /* OrderEntity.m in Sources */,
 				18BBC42018CB6AFA00F765EF /* WXYLoginViewController.m in Sources */,
+				1828E62918EB039B000519F5 /* WXYCustomerInfoAnnotation.m in Sources */,
 				184B409C18E8708100062C59 /* Reachability.m in Sources */,
 				18BBC42A18CB7C8600F765EF /* LineDashPolyline.m in Sources */,
 				184B408418E8708100062C59 /* NSDictionary+noNilValueForKey.m in Sources */,
@@ -707,6 +718,7 @@
 				18BBC43718CB91B300F765EF /* WXYOrderManagerViewController.m in Sources */,
 				184B409618E8708100062C59 /* NSDictionary+RequestEncoding.m in Sources */,
 				18BBC43118CB90BC00F765EF /* WXYDriverRootViewController.m in Sources */,
+				1828E62618EB0361000519F5 /* WXYTextAnnotation.m in Sources */,
 				184B409718E8708100062C59 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				184B409218E8708100062C59 /* MBProgressHUD.m in Sources */,
 				184B409B18E8708100062C59 /* MKNetworkOperation.m in Sources */,
@@ -716,7 +728,7 @@
 				184B409418E8708100062C59 /* NSData+MKBase64.m in Sources */,
 				184B408D18E8708100062C59 /* WXYSettingManager.m in Sources */,
 				181CCBB218CA2538005B357B /* WXYMapViewController.m in Sources */,
-				18BBC42D18CB875E00F765EF /* POIAnnotation.m in Sources */,
+				18BBC42D18CB875E00F765EF /* DriverInfoAnnotation.m in Sources */,
 				184B409018E8708100062C59 /* WXYNetworkEngine.m in Sources */,
 				184B40BC18E8742600062C59 /* CustomerInfo.m in Sources */,
 				184B40C718E9CE2400062C59 /* WXYCustomerResultNotifyView.m in Sources */,

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapSearchAPI.h>
+#import "WXYCustomerResultNotifyView.h"
 
 @interface WXYMapViewController : UIViewController<MAMapViewDelegate, AMapSearchDelegate>
 @property (weak, nonatomic) IBOutlet UIView *contentView;
@@ -33,6 +34,8 @@
 - (IBAction)createOrderButtonPressed:(id)sender;
 - (IBAction)researchButtonPressed:(id)sender;
 
+- (IBAction)submitButtonPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSString* desTitle;
 @property (assign, nonatomic) CLLocationCoordinate2D desLocation;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *typeSegment;

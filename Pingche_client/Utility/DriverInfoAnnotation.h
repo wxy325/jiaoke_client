@@ -8,12 +8,12 @@
 
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapCommonObj.h>
+#import "WXYTextAnnotation.h"
+@class DriverInfo;
 
-@interface POIAnnotation : MAPointAnnotation
-
-@property (strong, nonatomic) NSString* title;
-@property (strong, nonatomic) NSString* subTitle;
+@interface DriverInfoAnnotation : WXYTextAnnotation
 
 - (id)init;
+@property (strong, nonatomic) DriverInfo* driver;
 
 @end

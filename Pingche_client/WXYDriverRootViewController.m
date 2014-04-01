@@ -10,7 +10,7 @@
 #import "WXYOrderManagerViewController.h"
 #import "CommonUtility.h"
 #import "LineDashPolyline.h"
-#import "POIAnnotation.h"
+#import "DriverInfoAnnotation.h"
 #import "WXYNetworkEngine.h"
 #import "UIViewController+ShowHud.h"
 #import "WXYSettingManager.h"
