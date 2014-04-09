@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class DriverInfo;
 @interface WXYCustomerResultNotifyView : UIView
 
 @property (weak, nonatomic) IBOutlet UILabel* infoLabel;
 @property (weak, nonatomic) IBOutlet UILabel* telLabel;
 @property (weak, nonatomic) IBOutlet UILabel* distanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel* timeLabel;
+
+- (void)bind:(DriverInfo*)d;
 
 @end

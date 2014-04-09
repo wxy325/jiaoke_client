@@ -8,12 +8,16 @@
 
 #import "WXYDriverNewOrderNotifyView.h"
 #import "OrderEntity.h"
+#import "CustomerInfo.h"
 
 @implementation WXYDriverNewOrderNotifyView
 
 - (void)bind:(OrderEntity*)o
 {
-    
+    self.nameLabel.text = o.customer.realName;
+    self.telLabel.text = o.customer.tel;
+    self.locationFromLabel.text = o.fromDesc;
+    self.locationToLabel.text = o.toDesc;
 }
 
 

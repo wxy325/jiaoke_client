@@ -17,7 +17,8 @@
 {
     // Override point for customization after application launch.
     [MAMapServices sharedServices].apiKey = @"7b8460b48a80fdd39af6191245021353";
-    
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:83/255.f green:177/255.f blue:200/255.f alpha:1.f]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
     return YES;
 }

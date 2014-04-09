@@ -40,6 +40,9 @@
         lTo.latitude = la;
         self.locationTo = lTo;
         
+        self.fromDesc = dict[@"from_desc"];
+        self.toDesc = dict[@"to_desc"];
+        
         NSDictionary* driverDict = dict[@"driver"];
         DriverInfo* dr = [[DriverInfo alloc] initWithDict:driverDict];
         self.driver = dr;

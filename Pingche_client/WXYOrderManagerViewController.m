@@ -7,9 +7,13 @@
 //
 
 #import "WXYOrderManagerViewController.h"
+#import "UIViewController+ShowHud.h"
+#import "WXYNetworkEngine.h"
+#import "WXYDriverOrderDetailViewController.h"
+
 
 @interface WXYOrderManagerViewController ()
-
+@property (strong, nonatomic) NSArray* orderArray;
 @end
 
 @implementation WXYOrderManagerViewController
@@ -33,6 +37,19 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    MBProgressHUD* hud = [self showNetworkWaitingHud];
+    [SHARE_NW_ENGINE driverGetOrderState:GetOrderTypeAll onSucceed:^(NSArray *resultArray) {
+        [hud hide:YES];
+        self.orderArray = resultArray;
+        [self.tableView reloadData];
+    } onError:^(NSError *error) {
+        [hud hide:YES];
+        [self showErrorHudWithError:error];
+    }];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -47,7 +64,7 @@
 {
 
     // Return the number of rows in the section.
-    return self.number;
+    return self.orderArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -59,29 +76,34 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
-    if (indexPath.row == 0)
+    OrderEntity* o = self.orderArray[indexPath.row];
+    cell.textLabel.text = o.customer.realName;
+    switch (o.state)
     {
-        cell.textLabel.text = @"王先生";
-        cell.detailTextLabel.text = @"2014-3-12 14:20";
+        case OrderStateNew:
+            cell.detailTextLabel.text = @"新订单";
+            break;
+        case OrderStateArrived:
+            cell.detailTextLabel.text = @"已送达";
+            break;
+        case OrderStateReceived:
+            cell.detailTextLabel.text = @"已接";
+            break;
+        case OrderStateUnreceived:
+            cell.detailTextLabel.text = @"未接";
+            break;
+
     }
-    else
-    {
-        cell.textLabel.text = @"张先生";
-        cell.detailTextLabel.text = @"2014-3-12 13:50";
-    }
-    
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
-    {
-        [self performSegueWithIdentifier:@"wangdetail" sender:self];
-    }
-    else
-    {
-        [self performSegueWithIdentifier:@"zhangdetail" sender:self];
-    }
+    
+    WXYDriverOrderDetailViewController* vc = (WXYDriverOrderDetailViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"WXYDriverOrderDetailViewController"];
+    OrderEntity* o = self.orderArray[indexPath.row];
+    vc.order = o;
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 /*

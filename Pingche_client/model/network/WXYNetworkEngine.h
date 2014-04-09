@@ -44,11 +44,14 @@ typedef NS_ENUM(NSInteger, GetOrderType)
                               femaleNumber:(NSNumber*)femaleNumber
                                       from:(CLLocationCoordinate2D)from
                                         to:(CLLocationCoordinate2D)to
+                                    toDesc:(NSString*)toDesc
                                  onSucceed:(void(^)(OrderEntity* order))succeedBlock
                                    onError:(ErrorBlock)errorBlock;
 
 - (MKNetworkOperation*)customerGetOrderOnSucceed:(void(^)(OrderEntity* order))succeedBlock
                                          onError:(ErrorBlock)errorBlock;
+
+- (MKNetworkOperation*)customerGetAllOrder:(void(^)(NSArray* nArray, NSArray* hArray))succeedBlock onError:(ErrorBlock)errorBLock;
 
 - (MKNetworkOperation*)customerGetNearDriver:(CLLocationCoordinate2D)location
                                deltaLatitude:(float)deltaLa
@@ -69,4 +72,6 @@ typedef NS_ENUM(NSInteger, GetOrderType)
                                           state:(OrderState)state
                                       onSucceed:(VoidBlock)succeedBlock
                                         onError:(ErrorBlock)errorBlock;
+- (MKNetworkOperation*)driverGetInfoOnSucceed:(void(^)(DriverInfo* driver))succeedBlock
+                                      onError:(ErrorBlock)errorBlock;
 @end

@@ -14,6 +14,7 @@
 #import "WXYNetworkEngine.h"
 #import "UIViewController+ShowHud.h"
 #import "WXYSettingManager.h"
+#import "WXYCustomerInfoAnnotation.h"
 
 
 @interface WXYDriverRootViewController ()
@@ -31,12 +32,16 @@
 @property (assign, nonatomic) CLLocationCoordinate2D location;
 @property (assign, nonatomic) BOOL fFirstLocationUpdate;
 
+@property (assign, nonatomic) BOOL fSearchDone;
 
-//Timer
+//T nimer
 @property (strong, nonatomic) NSTimer* locationUpdateTimer;
 @property (strong, nonatomic) NSTimer* checkNewOrderTimer;
+@property (strong, nonatomic) NSTimer* getDriverInfoTimer;
+
 
 @property (strong, nonatomic) OrderEntity* getNewOrder;
+@property (strong, nonatomic) NSArray* customerAnnoArray;
 
 @end
 
@@ -58,15 +63,54 @@
     }
     return _checkNewOrderTimer;
 }
+- (NSTimer*)getDriverInfoTimer
+{
+    if (!_getDriverInfoTimer)
+    {
+        _getDriverInfoTimer = [NSTimer scheduledTimerWithTimeInterval:10.f target:self selector:@selector(getDriverInfo) userInfo:nil repeats:YES];
+    }
+    return _getDriverInfoTimer;
+}
+- (void)getDriverInfo
+{
+    [SHARE_NW_ENGINE driverGetInfoOnSucceed:^(DriverInfo *driver)
+     {
+        SHARE_SETTING_MANAGER.currentUserInfo.driverInfo = driver;
+         [self updateRouteOverlayer:driver];
+    } onError:^(NSError *error) {
+        
+    }];
+    [SHARE_NW_ENGINE driverGetOrderState:GetOrderTypeAll onSucceed:^(NSArray *resultArray) {
+        [self.mapView removeAnnotations:self.customerAnnoArray];
+        NSMutableArray* a = [@[] mutableCopy];
+        for (OrderEntity *o in resultArray)
+        {
+            CustomerInfo* c = o.customer;
+            WXYCustomerInfoAnnotation* an = [[WXYCustomerInfoAnnotation alloc] init];
+            an.customer = c;
+            an.coordinate = o.locationFrom;
+            [a addObject:an];
+        }
+        self.customerAnnoArray = a;
+        
+        [self.mapView addAnnotations:self.customerAnnoArray];
+
+    } onError:^(NSError *error) {
+        
+    }];
+    
+}
 - (void)restartAllTimer
 {
     [self.locationUpdateTimer setFireDate:[NSDate distantPast]];
     [self.checkNewOrderTimer setFireDate:[NSDate distantPast]];
+    [self.getDriverInfoTimer setFireDate:[NSDate distantPast]];
 }
 - (void)stopAllTimer
 {
     [self.locationUpdateTimer setFireDate:[NSDate distantFuture]];
     [self.checkNewOrderTimer setFireDate:[NSDate distantFuture]];
+    [self.getDriverInfoTimer setFireDate:[NSDate distantFuture]];
 }
 
 #pragma mark -
@@ -86,7 +130,7 @@
 	// Do any additional setup after loading the view.
     self.number = 1;
     self.fFirstLocationUpdate = YES;
-    
+    self.fSearchDone = YES;
     self.search = [[AMapSearchAPI alloc] initWithSearchKey:@"7b8460b48a80fdd39af6191245021353" Delegate:self];
     
     self.mapView = [[MAMapView alloc] initWithFrame:self.contentView.bounds];
@@ -95,36 +139,8 @@
     [self.contentView addSubview:self.mapView];
  
     
-    //获取司机当前订单信息，并更新路线
-    [SHARE_NW_ENGINE driverGetOrderState:GetOrderTypeAll onSucceed:^(NSArray *resultArray) {
-        [SHARE_SETTING_MANAGER.currentUserInfo.driverInfo.orderArray removeAllObjects];
-        [SHARE_SETTING_MANAGER.currentUserInfo.driverInfo.orderArray addObjectsFromArray:resultArray];
-        [self updateRoadInfo];
-    } onError:^(NSError *error) {
-//#warning 需要额外处理
-        [self showErrorHudWithText:@"系统错误，暂时无法获得当前订单"];
-    }];
-    
-    /*
-    self.driver  = [[POIAnnotation alloc] init];
-    self.driver.coordinate = CLLocationCoordinate2DMake(31.280092, 121.215714);
-    self.driver.title = @"当前位置";
-
-    self.siping = [[POIAnnotation alloc] init];
-    self.siping.coordinate = CLLocationCoordinate2DMake(31.283131, 121.500832);
-    self.siping.title = @"同济大学四平路校区";
-    [self.mapView addAnnotations:@[self.driver, self.siping]];
-    
-    self.jiading = [[POIAnnotation alloc] init];
-    self.jiading.coordinate = CLLocationCoordinate2DMake(31.284092, 121.215714);
-    self.jiading.title = @"张先生（合乘）";
-    
-    self.wujiao = [[POIAnnotation alloc] init];
-    self.wujiao.coordinate = CLLocationCoordinate2DMake(31.299059, 121.514160);
-    self.wujiao.title = @"五角场";
-     */
     [self.mapView setZoomLevel:12.f];
-//    [self.mapView setCenterCoordinate:self.driver.coordinate animated:NO];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -189,6 +205,15 @@
     }
     p.canShowCallout = YES;
     
+    if ([self.customerAnnoArray containsObject:annotation])
+    {
+        p.pinColor = MAPinAnnotationColorGreen;
+    }
+    else
+    {
+        p.pinColor = MAPinAnnotationColorPurple;
+    }
+    
     /*
     if (annotation == self.driver)
     {
@@ -220,15 +245,12 @@
     CLLocationCoordinate2D userL = userLocation.coordinate;
     self.location = userL;
     
-    [self.mapView setCenterCoordinate:userL animated:NO];
-    self.fFirstLocationUpdate = NO;
+    if (self.fFirstLocationUpdate)
+    {
+        [self.mapView setCenterCoordinate:userL animated:NO];
+        self.fFirstLocationUpdate = NO;
+    }
 
-    //        AMapNavigationSearchRequest *naviRequest= [[AMapNavigationSearchRequest alloc] init]; naviRequest.searchType = AMapSearchType_NaviDrive;
-    //        naviRequest.requireExtension = YES;
-    //        naviRequest.origin = [AMapGeoPoint locationWithLatitude:39.994949 longitude:116.447265];
-    //        naviRequest.destination = [AMapGeoPoint locationWithLatitude:39.990459 longitude:116.481476];
-    //        [self.search AMapNavigationSearch: naviRequest];
-    
 }
 
 
@@ -346,7 +368,6 @@
          self.getNewOrder.state = OrderStateUnreceived;
          [SHARE_SETTING_MANAGER.currentUserInfo.driverInfo.orderArray addObject:self.getNewOrder];
          self.getNewOrder = nil;
-         [self updateRoadInfo];
          [UIView animateWithDuration:0.3f animations:^
           {
               self.getNewOrderNotifyView.alpha = 0.f;
@@ -362,9 +383,50 @@
      }];
 }
 
-- (void)updateRoadInfo
+
+
+
+- (void)updateRouteOverlayer:(DriverInfo*)driver
 {
     
+    if (driver.route.count)
+    {
+        AMapNavigationSearchRequest *naviRequest= [[AMapNavigationSearchRequest alloc] init];
+        naviRequest.searchType = AMapSearchType_NaviDrive;
+        naviRequest.requireExtension = YES;
+        
+        
+        
+        NSMutableArray* waypointsArray = [@[] mutableCopy];
+        for (DriverLocationInfo* i in driver.route)
+        {
+            AMapGeoPoint* p =[AMapGeoPoint locationWithLatitude:i.location.latitude longitude:i.location.longitude];
+            [waypointsArray addObject:p];
+        }
+        AMapGeoPoint* last = [waypointsArray lastObject];
+        [waypointsArray removeObject:last];
+        //        naviRequest.waypoints = waypointsArray;
+        
+//        if (self.fSearchDone)
+//        {
+            self.fSearchDone = NO;
+            
+            naviRequest.searchType = AMapSearchType_NaviDrive;
+            naviRequest.requireExtension = YES;
+            naviRequest.origin = [AMapGeoPoint locationWithLatitude:driver.location.latitude longitude:driver.location.longitude];
+            naviRequest.destination = last;
+            naviRequest.waypoints = waypointsArray;
+            [self.search AMapNavigationSearch: naviRequest];
+//        }
+    }
+    else
+    {
+        [self.mapView removeOverlays:self.polylines];
+    }
 }
+
+
+
+
 
 @end

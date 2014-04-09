@@ -17,6 +17,7 @@
     {
         self.customerId = dict[@"customer_id"];
         self.realName = dict[@"real_name"];
+        self.tel = dict[@"tel"];
     }
     return self;
 }

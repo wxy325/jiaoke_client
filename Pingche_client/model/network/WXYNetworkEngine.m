@@ -13,7 +13,7 @@
 #import "NSDictionary+noNilValueForKey.h"
 
 //#define HOST_NAME @"10.60.42.200:12357/YimoERP"
-#define HOST_NAME @"192.168.1.100:8000"
+#define HOST_NAME @"192.168.1.101:8000"
 
 //User
 #define URL_USER_REGISTER @"user_register"
@@ -25,12 +25,14 @@
 #define URL_CUSTOMER_SEARCH_DRIVER @"customer/search_driver"
 #define URL_CUSTOMER_CREATE_ORDER @"customer/create_order"
 #define URL_CUSTOMER_GET_ORDER @"customer/get_order"
+#define URL_CUSTOMER_GET_ALL_ORDER @"customer/get_all_order"
 #define URL_CUSTOMER_GET_NEAR_DRIVER @"customer/get_near_driver"
 
 //Driver
 #define URL_DRIVER_UPDATE_LOCATION @"driver/update_location"
 #define URL_DRIVER_GET_ORDER @"driver/get_order"
 #define URL_DRIVER_UPDATE_ORDER @"driver/update_order"
+#define URL_DRIVER_GET_INFO @"driver/get_info"
 
 
 
@@ -208,6 +210,7 @@
                               femaleNumber:(NSNumber*)femaleNumber
                                       from:(CLLocationCoordinate2D)from
                                         to:(CLLocationCoordinate2D)to
+                                    toDesc:(NSString*)toDesc
                                  onSucceed:(void(^)(OrderEntity* order))succeedBlock
                                    onError:(ErrorBlock)errorBlock
 {
@@ -224,6 +227,7 @@
                                         @"from_longitude":@(from.longitude),
                                         @"des_latitude":@(to.latitude),
                                         @"des_longitude":@(to.longitude),
+                                        @"to_desc":toDesc,
                                         }
                           onSucceeded:^(MKNetworkOperation *completedOperation)
           {
@@ -260,6 +264,37 @@
         if (errorBlock)
         {
             errorBlock(error);
+        }
+    }];
+    return op;
+}
+- (MKNetworkOperation*)customerGetAllOrder:(void(^)(NSArray* nArray, NSArray* hArray))succeedBlock onError:(ErrorBlock)errorBLock
+{
+    MKNetworkOperation* op = nil;
+    op = [self startOperationWithPath:URL_CUSTOMER_GET_ALL_ORDER needLogin:YES paramers:@{} onSucceeded:^(MKNetworkOperation *completedOperation) {
+        if (succeedBlock)
+        {
+            NSDictionary* d = completedOperation.responseJSON;
+            NSArray* nDictArray = [d noNilValueForKey:@"new"];
+            NSArray* hDictArray = [d noNilValueForKey:@"history"];
+            NSMutableArray* nrArray = [@[] mutableCopy];
+            NSMutableArray* hrArray = [@[] mutableCopy];
+            for (NSDictionary* dict in nDictArray)
+            {
+                OrderEntity* o = [[OrderEntity alloc] initWithDict:dict];
+                [nrArray addObject:o];
+            }
+            for (NSDictionary* dict in hDictArray)
+            {
+                OrderEntity* o = [[OrderEntity alloc] initWithDict:dict];
+                [hrArray addObject:o];
+            }
+            succeedBlock(nrArray, hrArray);
+        }
+    } onError:^(MKNetworkOperation *completedOperation, NSError *error) {
+        if (errorBLock)
+        {
+            errorBLock(error);
         }
     }];
     return op;
@@ -401,6 +436,26 @@
     return op;
 }
 
-
+- (MKNetworkOperation*)driverGetInfoOnSucceed:(void(^)(DriverInfo* driver))succeedBlock
+                                      onError:(ErrorBlock)errorBlock
+{
+    MKNetworkOperation* op = nil;
+    
+    op = [self startOperationWithPath:URL_DRIVER_GET_INFO needLogin:YES paramers:@{} onSucceeded:^(MKNetworkOperation *completedOperation) {
+        NSDictionary* dict = completedOperation.responseJSON;
+        DriverInfo* driverInfo = [[DriverInfo alloc] initWithDict:dict];
+        if (succeedBlock)
+        {
+            succeedBlock(driverInfo);
+        }
+    } onError:^(MKNetworkOperation *completedOperation, NSError *error) {
+        if (errorBlock)
+        {
+            errorBlock(error);
+        }
+    }];
+    
+    return op;
+}
 
 @end

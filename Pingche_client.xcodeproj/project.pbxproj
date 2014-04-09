@@ -61,6 +61,13 @@
 		184B40BF18E8891C00062C59 /* OrderEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B40BE18E8891C00062C59 /* OrderEntity.m */; };
 		184B40C318E99E4500062C59 /* WXYDriverNewOrderNotifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B40C218E99E4500062C59 /* WXYDriverNewOrderNotifyView.m */; };
 		184B40C718E9CE2400062C59 /* WXYCustomerResultNotifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B40C618E9CE2400062C59 /* WXYCustomerResultNotifyView.m */; };
+		186BC5E818EE4C2A0002567B /* psueCASC4T8S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 186BC5E718EE4C2A0002567B /* psueCASC4T8S.jpg */; };
+		1897885418EDBE8900484DFA /* DriverLocationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897885318EDBE8900484DFA /* DriverLocationInfo.m */; };
+		1897885818EDDB8400484DFA /* WXYCDriverInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897885718EDDB8400484DFA /* WXYCDriverInfoView.m */; };
+		1897885B18EDEA7D00484DFA /* WXYCustomerOrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897885A18EDEA7D00484DFA /* WXYCustomerOrderListViewController.m */; };
+		1897885F18EDEAFA00484DFA /* WXYCustomerOrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897885D18EDEAFA00484DFA /* WXYCustomerOrderListCell.m */; };
+		1897886018EDEAFA00484DFA /* WXYCustomerOrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1897885E18EDEAFA00484DFA /* WXYCustomerOrderListCell.xib */; };
+		1897886318EDF3F300484DFA /* WXYDriverOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897886218EDF3F300484DFA /* WXYDriverOrderDetailViewController.m */; };
 		18AFA49018E187DA00D07899 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1845A43318CAF7DC00BFC213 /* MAMapKit.framework */; };
 		18BBC41D18CB6ADB00F765EF /* WXYRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC41C18CB6ADB00F765EF /* WXYRootViewController.m */; };
 		18BBC42018CB6AFA00F765EF /* WXYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BBC41F18CB6AFA00F765EF /* WXYLoginViewController.m */; };
@@ -183,6 +190,18 @@
 		184B40C218E99E4500062C59 /* WXYDriverNewOrderNotifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYDriverNewOrderNotifyView.m; sourceTree = "<group>"; };
 		184B40C518E9CE2400062C59 /* WXYCustomerResultNotifyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYCustomerResultNotifyView.h; sourceTree = "<group>"; };
 		184B40C618E9CE2400062C59 /* WXYCustomerResultNotifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYCustomerResultNotifyView.m; sourceTree = "<group>"; };
+		186BC5E718EE4C2A0002567B /* psueCASC4T8S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = psueCASC4T8S.jpg; sourceTree = "<group>"; };
+		1897885218EDBE8900484DFA /* DriverLocationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverLocationInfo.h; sourceTree = "<group>"; };
+		1897885318EDBE8900484DFA /* DriverLocationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverLocationInfo.m; sourceTree = "<group>"; };
+		1897885618EDDB8400484DFA /* WXYCDriverInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYCDriverInfoView.h; sourceTree = "<group>"; };
+		1897885718EDDB8400484DFA /* WXYCDriverInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYCDriverInfoView.m; sourceTree = "<group>"; };
+		1897885918EDEA7D00484DFA /* WXYCustomerOrderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYCustomerOrderListViewController.h; sourceTree = "<group>"; };
+		1897885A18EDEA7D00484DFA /* WXYCustomerOrderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYCustomerOrderListViewController.m; sourceTree = "<group>"; };
+		1897885C18EDEAFA00484DFA /* WXYCustomerOrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYCustomerOrderListCell.h; sourceTree = "<group>"; };
+		1897885D18EDEAFA00484DFA /* WXYCustomerOrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYCustomerOrderListCell.m; sourceTree = "<group>"; };
+		1897885E18EDEAFA00484DFA /* WXYCustomerOrderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WXYCustomerOrderListCell.xib; sourceTree = "<group>"; };
+		1897886118EDF3F300484DFA /* WXYDriverOrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYDriverOrderDetailViewController.h; sourceTree = "<group>"; };
+		1897886218EDF3F300484DFA /* WXYDriverOrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYDriverOrderDetailViewController.m; sourceTree = "<group>"; };
 		18BBC41B18CB6ADB00F765EF /* WXYRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYRootViewController.h; sourceTree = "<group>"; };
 		18BBC41C18CB6ADB00F765EF /* WXYRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYRootViewController.m; sourceTree = "<group>"; };
 		18BBC41E18CB6AFA00F765EF /* WXYLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYLoginViewController.h; sourceTree = "<group>"; };
@@ -346,6 +365,8 @@
 				181CCBB118CA2538005B357B /* WXYMapViewController.m */,
 				18BBC42118CB6B4F00F765EF /* WXYSelectLocationViewController.h */,
 				18BBC42218CB6B4F00F765EF /* WXYSelectLocationViewController.m */,
+				1897885918EDEA7D00484DFA /* WXYCustomerOrderListViewController.h */,
+				1897885A18EDEA7D00484DFA /* WXYCustomerOrderListViewController.m */,
 			);
 			name = customer;
 			sourceTree = "<group>";
@@ -394,6 +415,8 @@
 				184B40BB18E8742600062C59 /* CustomerInfo.m */,
 				184B40BD18E8891C00062C59 /* OrderEntity.h */,
 				184B40BE18E8891C00062C59 /* OrderEntity.m */,
+				1897885218EDBE8900484DFA /* DriverLocationInfo.h */,
+				1897885318EDBE8900484DFA /* DriverLocationInfo.m */,
 			);
 			path = beans;
 			sourceTree = "<group>";
@@ -548,8 +571,14 @@
 		184B40C418E9CDFD00062C59 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				186BC5E718EE4C2A0002567B /* psueCASC4T8S.jpg */,
 				184B40C518E9CE2400062C59 /* WXYCustomerResultNotifyView.h */,
 				184B40C618E9CE2400062C59 /* WXYCustomerResultNotifyView.m */,
+				1897885618EDDB8400484DFA /* WXYCDriverInfoView.h */,
+				1897885718EDDB8400484DFA /* WXYCDriverInfoView.m */,
+				1897885C18EDEAFA00484DFA /* WXYCustomerOrderListCell.h */,
+				1897885D18EDEAFA00484DFA /* WXYCustomerOrderListCell.m */,
+				1897885E18EDEAFA00484DFA /* WXYCustomerOrderListCell.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -581,6 +610,8 @@
 				18BBC43318CB90E600F765EF /* WXYDriverNewCustomerViewController.m */,
 				18BBC43518CB91B300F765EF /* WXYOrderManagerViewController.h */,
 				18BBC43618CB91B300F765EF /* WXYOrderManagerViewController.m */,
+				1897886118EDF3F300484DFA /* WXYDriverOrderDetailViewController.h */,
+				1897886218EDF3F300484DFA /* WXYDriverOrderDetailViewController.m */,
 			);
 			name = driver;
 			sourceTree = "<group>";
@@ -679,7 +710,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				181CCBB418CA2538005B357B /* Images.xcassets in Resources */,
+				186BC5E818EE4C2A0002567B /* psueCASC4T8S.jpg in Resources */,
 				184B40B318E8710100062C59 /* checkmark.png in Resources */,
+				1897886018EDEAFA00484DFA /* WXYCustomerOrderListCell.xib in Resources */,
 				181CCBA618CA2538005B357B /* InfoPlist.strings in Resources */,
 				184B40B618E8710100062C59 /* exclamationmark@2x.png in Resources */,
 				1845A44718CAF8B000BFC213 /* AMap.bundle in Resources */,
@@ -717,6 +750,7 @@
 				181CCBA818CA2538005B357B /* main.m in Sources */,
 				18BBC43718CB91B300F765EF /* WXYOrderManagerViewController.m in Sources */,
 				184B409618E8708100062C59 /* NSDictionary+RequestEncoding.m in Sources */,
+				1897885818EDDB8400484DFA /* WXYCDriverInfoView.m in Sources */,
 				18BBC43118CB90BC00F765EF /* WXYDriverRootViewController.m in Sources */,
 				1828E62618EB0361000519F5 /* WXYTextAnnotation.m in Sources */,
 				184B409718E8708100062C59 /* NSString+MKNetworkKitAdditions.m in Sources */,
@@ -730,10 +764,13 @@
 				181CCBB218CA2538005B357B /* WXYMapViewController.m in Sources */,
 				18BBC42D18CB875E00F765EF /* DriverInfoAnnotation.m in Sources */,
 				184B409018E8708100062C59 /* WXYNetworkEngine.m in Sources */,
+				1897885418EDBE8900484DFA /* DriverLocationInfo.m in Sources */,
 				184B40BC18E8742600062C59 /* CustomerInfo.m in Sources */,
+				1897885B18EDEA7D00484DFA /* WXYCustomerOrderListViewController.m in Sources */,
 				184B40C718E9CE2400062C59 /* WXYCustomerResultNotifyView.m in Sources */,
 				184B40C318E99E4500062C59 /* WXYDriverNewOrderNotifyView.m in Sources */,
 				184B409518E8708100062C59 /* NSDate+RFC1123.m in Sources */,
+				1897885F18EDEAFA00484DFA /* WXYCustomerOrderListCell.m in Sources */,
 				184B408E18E8708100062C59 /* WXYDataModel.m in Sources */,
 				184B409318E8708100062C59 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				18BBC42318CB6B4F00F765EF /* WXYSelectLocationViewController.m in Sources */,
@@ -741,6 +778,7 @@
 				18BBC42718CB7C3600F765EF /* CommonUtility.m in Sources */,
 				184B409918E8708100062C59 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				184B408F18E8708100062C59 /* WXYError.m in Sources */,
+				1897886318EDF3F300484DFA /* WXYDriverOrderDetailViewController.m in Sources */,
 				184B40B918E8741A00062C59 /* DriverInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

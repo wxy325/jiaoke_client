@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "DriverLocationInfo.h"
 typedef NS_ENUM(NSInteger, DriverState) {
     DriverStateOff = 0,
     DriverStateDache = 1,
@@ -20,12 +21,15 @@ typedef NS_ENUM(NSInteger, DriverState) {
 @property (strong, nonatomic) NSString* carNumber;
 @property (assign, nonatomic) DriverState state;
 @property (strong, nonatomic) NSString* realName;
-
+@property (strong, nonatomic) NSString* company;
+@property (strong, nonatomic) NSString* tel;
 
 @property (assign, nonatomic) BOOL fHaveLocaitonInfo;
 @property (assign, nonatomic) CLLocationCoordinate2D location;
 
 @property (strong, nonatomic) NSMutableArray* orderArray;
+
+@property (strong, nonatomic) NSArray* route;
 
 - (id)initWithDict:(NSDictionary*)dict;
 

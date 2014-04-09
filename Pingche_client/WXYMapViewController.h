@@ -10,6 +10,7 @@
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapSearchAPI.h>
 #import "WXYCustomerResultNotifyView.h"
+#import "WXYCDriverInfoView.h"
 
 @interface WXYMapViewController : UIViewController<MAMapViewDelegate, AMapSearchDelegate>
 @property (weak, nonatomic) IBOutlet UIView *contentView;
@@ -42,5 +43,15 @@
 
 
 @property (weak, nonatomic) IBOutlet WXYCustomerResultNotifyView *customerResultNotifyView;
+@property (weak, nonatomic) IBOutlet WXYCDriverInfoView *driverInfoView;
+
+//@property (weak, nonatomic) IBOutlet UIButton *oneBtnPressed;
+- (IBAction)zeroButtonPressed:(id)sender;
+
+- (IBAction)oneBtnPressed:(id)sender;
+- (IBAction)twoBtnPressed:(id)sender;
+//@property (weak, nonatomic) IBOutlet UIButton *zeroBtnPressed;
+@property (weak, nonatomic) IBOutlet UIView *selectTypeView;
+- (IBAction)newSubmitBtnPressed:(id)sender;
 
 @end

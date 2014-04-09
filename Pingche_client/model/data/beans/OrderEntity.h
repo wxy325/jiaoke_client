@@ -36,6 +36,8 @@ typedef NS_ENUM(NSInteger, OrderType)
 @property (assign, nonatomic) OrderType type;
 @property (assign, nonatomic) OrderState state;
 @property (assign, nonatomic) CLLocationCoordinate2D locationFrom;
+@property (strong, nonatomic) NSString* fromDesc;
+@property (strong, nonatomic) NSString* toDesc;
 @property (assign, nonatomic) CLLocationCoordinate2D locationTo;
 
 - (id)initWithDict:(NSDictionary*)dict;

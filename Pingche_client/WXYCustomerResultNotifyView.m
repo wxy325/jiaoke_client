@@ -7,6 +7,7 @@
 //
 
 #import "WXYCustomerResultNotifyView.h"
+#import "DriverInfo.h"
 
 @implementation WXYCustomerResultNotifyView
 
@@ -27,5 +28,13 @@
     // Drawing code
 }
 */
-
+- (void)bind:(DriverInfo*)d
+{
+    self.infoLabel.text = [NSString stringWithFormat:@"%@ %@ %@",d.realName, d.carNumber, d.company];
+    self.telLabel.text = [NSString stringWithFormat:@"联系电话：%@",d.tel];
+//    @property (weak, nonatomic) IBOutlet UILabel* infoLabel;
+//    @property (weak, nonatomic) IBOutlet UILabel* telLabel;
+//    @property (weak, nonatomic) IBOutlet UILabel* distanceLabel;
+//    @property (weak, nonatomic) IBOutlet UILabel* timeLabel;
+}
 @end

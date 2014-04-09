@@ -15,5 +15,5 @@
 
 @property (strong, nonatomic) NSNumber* customerId;
 @property (strong, nonatomic) NSString* realName;
-
+@property (strong, nonatomic) NSString* tel;
 @end

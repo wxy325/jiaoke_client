@@ -58,7 +58,7 @@
 #pragma mark -
 
 
-
+@property (assign, nonatomic) BOOL fSearchDone;
 
 @end
 
@@ -190,6 +190,17 @@
 {
     [self.mapView removeAnnotation:self.driverAnnotation];
     [self.mapView removeAnnotation:self.destAnnotation];
+    [self updateRouteOverlayer:self.currentOrder.driver];
+    if (self.currentOrder.driver)
+    {
+        self.driverInfoView.hidden = NO;
+        [self.driverInfoView bind:self.currentOrder.driver];
+    }
+    else
+    {
+        self.driverInfoView.hidden = YES;
+    }
+    
     if (self.currentOrder)
     {
         self.driverAnnotation.driver = self.currentOrder.driver;
@@ -198,6 +209,8 @@
         self.destAnnotation.coordinate = self.currentOrder.locationTo;
         [self.mapView addAnnotation:self.destAnnotation];
         self.destAnnotation.title = @"目的地";
+        
+        
     }
 }
 
@@ -233,6 +246,7 @@
     
     [super viewDidLoad];
     
+    self.fSearchDone = YES;
     self.fFirstLocationUpdate = YES;
     
 	// Do any additional setup after loading the view, typically from a nib.
@@ -362,9 +376,10 @@
 #pragma mark - Search
 -(void)onNavigationSearchDone:(AMapNavigationSearchRequest *)request response:(AMapNavigationSearchResponse *)response
 {
+    [self.mapView removeOverlays:self.polylines];
     self.polylines = [CommonUtility polylinesForPath:response.route.paths[0]];
     [self.mapView addOverlays:self.polylines];
-
+    self.fSearchDone = YES;
 }
 
 #pragma mark - IBAction
@@ -375,7 +390,47 @@
         [self.mapView setCenterCoordinate:self.currentAnnotation.coordinate animated:YES];
     }
 }
-- (IBAction)rbt:(id)sender {
+- (void)updateRouteOverlayer:(DriverInfo*)driver
+{
+
+    if (driver.route.count)
+    {
+        AMapNavigationSearchRequest *naviRequest= [[AMapNavigationSearchRequest alloc] init];
+        naviRequest.searchType = AMapSearchType_NaviDrive;
+        naviRequest.requireExtension = YES;
+        
+
+        
+        NSMutableArray* waypointsArray = [@[] mutableCopy];
+        for (DriverLocationInfo* i in driver.route)
+        {
+            AMapGeoPoint* p =[AMapGeoPoint locationWithLatitude:i.location.latitude longitude:i.location.longitude];
+            [waypointsArray addObject:p];
+        }
+        AMapGeoPoint* last = [waypointsArray lastObject];
+        [waypointsArray removeObject:last];
+//        naviRequest.waypoints = waypointsArray;
+
+//        if (self.fSearchDone)
+//        {
+            self.fSearchDone = NO;
+
+            naviRequest.searchType = AMapSearchType_NaviDrive;
+            naviRequest.requireExtension = YES;
+            naviRequest.origin = [AMapGeoPoint locationWithLatitude:driver.location.latitude longitude:driver.location.longitude];
+            naviRequest.destination = last;
+            naviRequest.waypoints = waypointsArray;
+            [self.search AMapNavigationSearch: naviRequest];
+//        }
+    }
+    else
+    {
+        [self.mapView removeOverlays:self.polylines];
+    }
+}
+
+- (IBAction)rbt:(id)sender
+{
     if (self.fFirstLocationUpdate)
     {
         return;
@@ -451,7 +506,6 @@
         
     }];
 }
-// Called when the UIKeyboardWillHideNotification is sent
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification
 {
     [UIView animateWithDuration:0.3f animations:^{
@@ -496,6 +550,7 @@
                             femaleNumber:@(self.femaleNumberTextField.text.intValue)
                                     from:self.currentAnnotation.coordinate
                                       to:self.desLocation
+                                  toDesc:self.desTitle
                                onSucceed:^(OrderEntity *order)
     {
         [hud hide:YES];
@@ -534,9 +589,11 @@
         self.systemSelectDriver = driver;
         self.rejectDriversArray = [@[] mutableCopy];
         self.customerResultNotifyView.hidden = NO;
+        [self.customerResultNotifyView bind:driver];
     }
                                   onError:^(NSError *error)
      {
+         [hud hide:YES];
          [self showErrorHudWithError:error];
      }];
     
@@ -544,6 +601,13 @@
 
 - (IBAction)submitButtonPressed:(id)sender
 {
+    [UIView animateWithDuration:0.3f animations:^{
+        self.selectTypeView.alpha = 0.f;
+    } completion:^(BOOL finished) {
+        self.selectTypeView.hidden = YES;
+    }];
+    
+    self.selectTypeView.hidden = YES;
     if (!self.maleNumberTextField.text.length
         || !self.maleNumberTextField.text.length
         || !self.desTitle.length)
@@ -568,12 +632,50 @@
         self.systemSelectDriver = driver;
         self.rejectDriversArray = [@[] mutableCopy];
         self.customerResultNotifyView.hidden = NO;
+        [self.customerResultNotifyView bind:driver];
     }
                                   onError:^(NSError *error)
     {
         [self showErrorHudWithError:error];
+        
     }];
 }
 
 
+- (IBAction)zeroButtonPressed:(id)sender {
+    self.typeSegment.selectedSegmentIndex = 0;
+    self.maleNumberTextField.text = @"1";
+    self.femaleNumberTextField.text = @"0";
+    [self submitButtonPressed:nil];
+}
+
+- (IBAction)oneBtnPressed:(id)sender {
+    self.maleNumberTextField.text = @"1";
+        self.femaleNumberTextField.text = @"0";
+    self.typeSegment.selectedSegmentIndex = 1;
+        [self submitButtonPressed:nil];
+}
+
+- (IBAction)twoBtnPressed:(id)sender {
+        self.femaleNumberTextField.text = @"0";
+    self.typeSegment.selectedSegmentIndex = 1;
+    self.maleNumberTextField.text = @"2";
+    [self submitButtonPressed:nil];
+
+}
+- (IBAction)newSubmitBtnPressed:(id)sender {
+    if (!self.desTitle.length)
+    {
+        [self showErrorHudWithText:@"请先选择地点"];
+        return;
+    }
+    self.selectTypeView.hidden = NO;
+    self.selectTypeView.alpha = 0.f;
+    [UIView animateWithDuration:0.3f animations:^{
+        self.selectTypeView.alpha = 1.f;
+    } completion:^(BOOL finished) {
+        
+    }];
+
+}
 @end
