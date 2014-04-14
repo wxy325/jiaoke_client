@@ -12,6 +12,7 @@
 
 @interface WXYDriverOrderDetailViewController : UIViewController
 @property (strong, nonatomic) OrderEntity* order;
+@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *customerLocationLabel;
@@ -23,4 +24,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn;
 
 @property (weak, nonatomic) IBOutlet UILabel *stateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *noCustomerLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+@property (assign, nonatomic) int orderIndex;
+
 @end

@@ -62,6 +62,8 @@
 		184B40C318E99E4500062C59 /* WXYDriverNewOrderNotifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B40C218E99E4500062C59 /* WXYDriverNewOrderNotifyView.m */; };
 		184B40C718E9CE2400062C59 /* WXYCustomerResultNotifyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B40C618E9CE2400062C59 /* WXYCustomerResultNotifyView.m */; };
 		186BC5E818EE4C2A0002567B /* psueCASC4T8S.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 186BC5E718EE4C2A0002567B /* psueCASC4T8S.jpg */; };
+		18810F0518F577070087C50E /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 18810F0418F577070087C50E /* Location.gpx */; };
+		18810F0818F5864E0087C50E /* WXYDriverChangzhaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18810F0718F5864E0087C50E /* WXYDriverChangzhaoViewController.m */; };
 		1897885418EDBE8900484DFA /* DriverLocationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897885318EDBE8900484DFA /* DriverLocationInfo.m */; };
 		1897885818EDDB8400484DFA /* WXYCDriverInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897885718EDDB8400484DFA /* WXYCDriverInfoView.m */; };
 		1897885B18EDEA7D00484DFA /* WXYCustomerOrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1897885A18EDEA7D00484DFA /* WXYCustomerOrderListViewController.m */; };
@@ -191,6 +193,10 @@
 		184B40C518E9CE2400062C59 /* WXYCustomerResultNotifyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYCustomerResultNotifyView.h; sourceTree = "<group>"; };
 		184B40C618E9CE2400062C59 /* WXYCustomerResultNotifyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYCustomerResultNotifyView.m; sourceTree = "<group>"; };
 		186BC5E718EE4C2A0002567B /* psueCASC4T8S.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = psueCASC4T8S.jpg; sourceTree = "<group>"; };
+		18810F0218F576880087C50E /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
+		18810F0418F577070087C50E /* Location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Location.gpx; path = Pingche_client/Location.gpx; sourceTree = "<group>"; };
+		18810F0618F5864E0087C50E /* WXYDriverChangzhaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYDriverChangzhaoViewController.h; sourceTree = "<group>"; };
+		18810F0718F5864E0087C50E /* WXYDriverChangzhaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYDriverChangzhaoViewController.m; sourceTree = "<group>"; };
 		1897885218EDBE8900484DFA /* DriverLocationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriverLocationInfo.h; sourceTree = "<group>"; };
 		1897885318EDBE8900484DFA /* DriverLocationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverLocationInfo.m; sourceTree = "<group>"; };
 		1897885618EDDB8400484DFA /* WXYCDriverInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYCDriverInfoView.h; sourceTree = "<group>"; };
@@ -259,6 +265,7 @@
 		181CCB8F18CA2537005B357B = {
 			isa = PBXGroup;
 			children = (
+				18810F0418F577070087C50E /* Location.gpx */,
 				181CCBA118CA2538005B357B /* Pingche_client */,
 				181CCBC018CA2538005B357B /* Pingche_clientTests */,
 				181CCB9A18CA2538005B357B /* Frameworks */,
@@ -314,6 +321,7 @@
 				18BBC41C18CB6ADB00F765EF /* WXYRootViewController.m */,
 				18BBC41E18CB6AFA00F765EF /* WXYLoginViewController.h */,
 				18BBC41F18CB6AFA00F765EF /* WXYLoginViewController.m */,
+				18810F0218F576880087C50E /* Location.gpx */,
 			);
 			path = Pingche_client;
 			sourceTree = "<group>";
@@ -612,6 +620,8 @@
 				18BBC43618CB91B300F765EF /* WXYOrderManagerViewController.m */,
 				1897886118EDF3F300484DFA /* WXYDriverOrderDetailViewController.h */,
 				1897886218EDF3F300484DFA /* WXYDriverOrderDetailViewController.m */,
+				18810F0618F5864E0087C50E /* WXYDriverChangzhaoViewController.h */,
+				18810F0718F5864E0087C50E /* WXYDriverChangzhaoViewController.m */,
 			);
 			name = driver;
 			sourceTree = "<group>";
@@ -711,6 +721,7 @@
 			files = (
 				181CCBB418CA2538005B357B /* Images.xcassets in Resources */,
 				186BC5E818EE4C2A0002567B /* psueCASC4T8S.jpg in Resources */,
+				18810F0518F577070087C50E /* Location.gpx in Resources */,
 				184B40B318E8710100062C59 /* checkmark.png in Resources */,
 				1897886018EDEAFA00484DFA /* WXYCustomerOrderListCell.xib in Resources */,
 				181CCBA618CA2538005B357B /* InfoPlist.strings in Resources */,
@@ -756,6 +767,7 @@
 				184B409718E8708100062C59 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				184B409218E8708100062C59 /* MBProgressHUD.m in Sources */,
 				184B409B18E8708100062C59 /* MKNetworkOperation.m in Sources */,
+				18810F0818F5864E0087C50E /* WXYDriverChangzhaoViewController.m in Sources */,
 				184B409118E8708100062C59 /* WXYNetworkOperation.m in Sources */,
 				184B408C18E8708100062C59 /* UserInfo.m in Sources */,
 				18BBC41D18CB6ADB00F765EF /* WXYRootViewController.m in Sources */,

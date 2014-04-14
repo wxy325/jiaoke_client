@@ -34,6 +34,7 @@
     self.toLabel.text = o.toDesc;
     self.fromLabel.text = o.fromDesc;
     self.payButton.hidden = o.state == OrderStateArrived;
+    self.compleLabel.hidden = o.state != OrderStateArrived;
 //    @property (weak, nonatomic) IBOutlet UIButton *payButton;
 //    
 //    @property (strong, nonatomic) IBOutlet UILabel* timeLabel;

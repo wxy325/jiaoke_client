@@ -18,5 +18,11 @@
 
 - (IBAction)newOrderSubmitButtonPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet WXYDriverNewOrderNotifyView *getNewOrderNotifyView;
+@property (weak, nonatomic) IBOutlet UIView *menuView;
+
+
+- (IBAction)stateChangeButtonPressed:(id)sender;
+- (IBAction)settingButtonPressed:(id)sender;
+
 
 @end

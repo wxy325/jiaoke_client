@@ -10,7 +10,7 @@
 #import "UIViewController+ShowHud.h"
 #import "WXYNetworkEngine.h"
 #import "WXYDriverOrderDetailViewController.h"
-
+#import "WXYCustomerOrderListCell.h"
 
 @interface WXYOrderManagerViewController ()
 @property (strong, nonatomic) NSArray* orderArray;
@@ -41,7 +41,7 @@
 {
     [super viewWillAppear:animated];
     MBProgressHUD* hud = [self showNetworkWaitingHud];
-    [SHARE_NW_ENGINE driverGetOrderState:GetOrderTypeAll onSucceed:^(NSArray *resultArray) {
+    [SHARE_NW_ENGINE driverGetOrderState:GetOrderTypeHistory onSucceed:^(NSArray *resultArray) {
         [hud hide:YES];
         self.orderArray = resultArray;
         [self.tableView reloadData];
@@ -69,41 +69,29 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
+    WXYCustomerOrderListCell* cell = (WXYCustomerOrderListCell*)[tableView dequeueReusableCellWithIdentifier:@"aaa"];
     if (!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        cell = [WXYCustomerOrderListCell makeCell];
     }
+    
     OrderEntity* o = self.orderArray[indexPath.row];
-    cell.textLabel.text = o.customer.realName;
-    switch (o.state)
-    {
-        case OrderStateNew:
-            cell.detailTextLabel.text = @"新订单";
-            break;
-        case OrderStateArrived:
-            cell.detailTextLabel.text = @"已送达";
-            break;
-        case OrderStateReceived:
-            cell.detailTextLabel.text = @"已接";
-            break;
-        case OrderStateUnreceived:
-            cell.detailTextLabel.text = @"未接";
-            break;
-
-    }
+    [cell bindOrderEntity:o];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    WXYDriverOrderDetailViewController* vc = (WXYDriverOrderDetailViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"WXYDriverOrderDetailViewController"];
+//    OrderEntity* o = self.orderArray[indexPath.row];
+//    vc.order = o;
+//    [self.navigationController pushViewController:vc animated:YES];
     
-    WXYDriverOrderDetailViewController* vc = (WXYDriverOrderDetailViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"WXYDriverOrderDetailViewController"];
-    OrderEntity* o = self.orderArray[indexPath.row];
-    vc.order = o;
-    [self.navigationController pushViewController:vc animated:YES];
-    
+}
+
+- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 78.f;
 }
 
 /*

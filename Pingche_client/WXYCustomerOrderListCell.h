@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel* toLabel;
 
 + (WXYCustomerOrderListCell*)makeCell;
+@property (weak, nonatomic) IBOutlet UILabel *compleLabel;
 
 - (void)bindOrderEntity:(OrderEntity*)o;
 

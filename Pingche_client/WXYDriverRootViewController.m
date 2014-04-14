@@ -15,6 +15,7 @@
 #import "UIViewController+ShowHud.h"
 #import "WXYSettingManager.h"
 #import "WXYCustomerInfoAnnotation.h"
+#import "WXYDriverOrderDetailViewController.h"
 
 
 @interface WXYDriverRootViewController ()
@@ -141,6 +142,17 @@
     
     [self.mapView setZoomLevel:12.f];
 
+    [self.navigationController.tabBarController.tabBar setTintColor:[UIColor colorWithRed:121.f/255.f green:223.f/255.f blue:237.f/255.f alpha:1.f]];
+    UITabBar* tabBar = self.navigationController.tabBarController.tabBar;
+    UITabBarItem* item1 = tabBar.items[1];
+    item1.title = @"乘客1";
+    UITabBarItem* item2 = tabBar.items[2];
+    item2.title = @"乘客2";
+    NSArray* vcArray = self.navigationController.tabBarController.viewControllers;
+    WXYDriverOrderDetailViewController* vc1 = vcArray[1];
+    vc1.orderIndex = 1;
+    WXYDriverOrderDetailViewController* vc2 = vcArray[2];
+    vc2.orderIndex = 2;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -425,8 +437,30 @@
     }
 }
 
+- (IBAction)menuButtonPressed:(id)sender
+{
+    if (self.menuView.hidden)
+    {
+        self.menuView.hidden = NO;
+        self.menuView.alpha = 0;
+        [UIView animateWithDuration:0.3f animations:^{
+            self.menuView.alpha = 1;
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration:0.3f animations:^{
+            self.menuView.alpha = 0;
+        } completion:^(BOOL finished) {
+            self.menuView.hidden = YES;
+        }];
+    }
+}
 
 
+- (IBAction)stateChangeButtonPressed:(id)sender {
+}
 
-
+- (IBAction)settingButtonPressed:(id)sender {
+}
 @end

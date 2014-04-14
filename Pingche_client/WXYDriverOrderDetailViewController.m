@@ -25,15 +25,40 @@
     }
     return self;
 }
+- (void)updateOrder
+{
+    MBProgressHUD* hud = [self showNetworkWaitingHud];
+    [SHARE_NW_ENGINE driverGetOrderState:GetOrderTypeAll onSucceed:^(NSArray *resultArray) {
+        [hud hide:YES];
+        if (resultArray.count >= self.orderIndex)
+        {
+            self.order = resultArray[self.orderIndex - 1];
+        }
+        else
+        {
+            self.order = nil;
+        }
+        [self bind:self.order];
+        
+    } onError:^(NSError *error) {
+        [hud hide:YES];
+        self.order = nil;
+        [self bind:self.order];
+    }];
 
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    [self bind:self.order];
-    
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self updateOrder];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -63,53 +88,70 @@
  @property (weak, nonatomic) IBOutlet UILabel *stateLabel;
 
  */
-    self.customerLocationLabel.text = o.fromDesc;
-    self.customerLocationLabel.text = o.customer.realName;
-    self.phoneLabel.text = o.customer.tel;
-    self.desLabel.text = o.toDesc;
-    
-    
-    NSString* str = nil;
-    switch (o.state)
+    if (self.order)
     {
-        case OrderStateNew:
-            str = @"新订单";
-            break;
-        case OrderStateArrived:
-            str = @"已送达";
-            break;
-        case OrderStateReceived:
-            str = @"已接";
-            break;
-        case OrderStateUnreceived:
-            str = @"未接";
-            break;
-    }
-    self.stateLabel.text = str;
+        self.noCustomerLabel.hidden = YES;
+        self.containerView.hidden = NO;
+        
+        self.customerLocationLabel.text = o.fromDesc;
+        self.customerNameLabel.text = o.customer.realName;
+        self.phoneLabel.text = o.customer.tel;
+        self.desLabel.text = o.toDesc;
+        NSString* typeStr = o.type == OrderTypeDache? @"打车":@"拼车";
+        NSString* st = [NSString stringWithFormat:@"%d个人%@",(o.maleNumber + o.femaleNumber),typeStr];
+        self.detailLabel.text = st;
+        
+        
+        NSString* str = nil;
+        switch (o.state)
+        {
+            case OrderStateNew:
+                str = @"新订单";
+                break;
+            case OrderStateArrived:
+                str = @"已送达";
+                break;
+            case OrderStateReceived:
+                str = @"已接";
+                break;
+            case OrderStateUnreceived:
+                str = @"未接";
+                break;
+        }
+        self.stateLabel.text = str;
+        
+        switch (o.state)
+        {
+            case OrderStateNew:
+                str = @"确认订单";
+                break;
+            case OrderStateArrived:
+                str = @"";
+                break;
+            case OrderStateReceived:
+                str = @"确认送达";
+                break;
+            case OrderStateUnreceived:
+                str = @"确认接到";
+                break;
+        }
+        [self.btn setTitle:str forState:UIControlStateNormal];
 
-    switch (o.state)
-    {
-        case OrderStateNew:
-            str = @"确认订单";
-            break;
-        case OrderStateArrived:
-            str = @"";
-            break;
-        case OrderStateReceived:
-            str = @"确认送达";
-            break;
-        case OrderStateUnreceived:
-            str = @"确认接到";
-            break;
     }
-    [self.btn setTitle:str forState:UIControlStateNormal];
+    else
+    {
+        self.noCustomerLabel.hidden = NO;
+        self.containerView.hidden = YES;
+    }
 }
 - (IBAction)btnPressed:(id)sender
 {
     MBProgressHUD* hud = [self showNetworkWaitingHud];
     [SHARE_NW_ENGINE driverUpdateOrderOrderId:self.order.orderId state:(self.order.state+1) onSucceed:^{
         [hud hide:YES];
-        [self.navigationController popViewControllerAnimated:YES];
+        [self showTextHud:@"成功"];
+        [self updateOrder];
+//        [self.navigationController popViewControllerAnimated:YES];
     } onError:^(NSError *error)
     {
         [hud hide:YES];
