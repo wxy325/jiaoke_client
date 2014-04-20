@@ -12,7 +12,7 @@
 #import "GraphicName.h"
 #import "NSDictionary+noNilValueForKey.h"
 
-#define HOST_NAME @"192.168.2.1:8000"
+#define HOST_NAME @"192.168.1.100:8000"
 
 //User
 #define URL_USER_REGISTER @"user_register"
